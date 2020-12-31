@@ -9,7 +9,7 @@ function HeroDisplay(props) {
 
     return (
         <div className={classes.details}>
-            <div className="title">
+            <div className={classes.title}>
                 {details.title}
             </div>
             <div className={classes.other}>
