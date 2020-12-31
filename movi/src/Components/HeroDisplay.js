@@ -23,7 +23,7 @@ function HeroDisplay(props) {
             </div>
             <div className={classes.heroActions}>
                 <button className={classes.button}>
-                    <div className={classes.flexRow}>
+                    <div className={classes.flexRowCentered}>
                         <PlayArrowIcon /> 
                         <span className={classes.playTextMargins}>
                             PLAY

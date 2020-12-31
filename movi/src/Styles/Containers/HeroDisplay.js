@@ -62,7 +62,7 @@ export const useStyles = makeStyles((theme) => ({
       marginLeft: '16px'
     },
 
-    flexRow: {
+    flexRowCentered: {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center'
