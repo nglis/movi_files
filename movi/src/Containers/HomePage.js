@@ -1,4 +1,5 @@
 import HeroDisplay from '../Components/HeroDisplay';
+import HorizontalScrollContainer from '../SubContainers/HorizontalScrollContainer';
 
 function HomePage() {
     const details = { 
@@ -13,11 +14,12 @@ function HomePage() {
     return(
         <div className="App">
           <header>
-              This is where the app bar will go
+              MOVI
           </header>
           <HeroDisplay 
             details={details}
           />
+          <HorizontalScrollContainer />
       </div>
     );
 }
