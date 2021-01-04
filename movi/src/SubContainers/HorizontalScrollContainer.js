@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-import img from '../mission_impossible_poster.jpg';
 import { useStyles } from '../Styles/SubContainers/HorizontalScrollContainer';
 
 const tileData = [
