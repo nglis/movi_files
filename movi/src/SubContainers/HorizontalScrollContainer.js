@@ -35,7 +35,6 @@ function HorizontalScrollContainer(props) {
         if (!dragging) return;
 
         const shift = scrollAmount + mousePosition.x - e.clientX;
-
         if (shift > scrollDivScrollWidth - (scrollDivClientWidth)) {
             return;
         }
@@ -51,6 +50,7 @@ function HorizontalScrollContainer(props) {
     }
 
     useEffect(() => {
+        // Get data relative to clients viewport
         setScrollDivScrollWidth(scrollDivRef.current.scrollWidth);
         setScrollDivClientWidth(scrollDivRef.current.clientWidth);
     }, []);
@@ -58,7 +58,7 @@ function HorizontalScrollContainer(props) {
     return(
         <>
             <div className={classes.text}>
-                My Movies
+                My Shows
             </div>
             <div 
                 ref={scrollDivRef}
