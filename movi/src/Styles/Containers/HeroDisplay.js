@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
     details: {
-        height: '67vh',
+        height: '55vh',
         margin: '30px',
         textAlign: 'left'
     },
