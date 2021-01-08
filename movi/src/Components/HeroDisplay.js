@@ -13,7 +13,7 @@ function HeroDisplay(props) {
                 {details.title}
             </div>
             <div className={classes.other}>
-                {details.year} | {details.rating} | {details.length}
+                {details.year} | {details.rating}/10 | {details.length} min
             </div>
             <div className={classes.episode}>
                 {details.episode}
