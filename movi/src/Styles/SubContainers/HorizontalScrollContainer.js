@@ -11,8 +11,7 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-start'
   },
   imgDimensions: {
-    height: '233px',
-    width: '166px',
+    maxHeight: '240px',
     marginRight: '8px'
   },
   text: {

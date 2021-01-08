@@ -1,27 +1,28 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { convertDataForScrollContainer } from '../Other/MovieDataHandler';
 
 import { useStyles } from '../Styles/SubContainers/HorizontalScrollContainer';
 
-const tileData = [
-    // {
-    //     img: img,
-    //     title: 'TEST',
-    //     author: 'test'
-    // },
-];
+import useCurrentWidth from '../Hooks/useCurrentWidth';
+
+const CONTAINER_ITEM_LIMIT = 20;
 
 function HorizontalScrollContainer(props) {
-    const { collectionTitle } = props;
+    const { collectionTitle, content } = props;
 
     const [scrollDivScrollWidth, setScrollDivScrollWidth] = useState(0);
     const [scrollDivClientWidth, setScrollDivClientWidth] = useState(0);
 
-    const [dragging, setDragging] = useState(true);
+    const [dragging, setDragging] = useState(false);
     const [scrollAmount, setScrollAmount] = useState(0);
     const [mousePosition, setMousePosition] = useState( { x: -1, y: -1} );
 
+    const [itemsForContainer, setItemsForContainer] = useState([]);
+
     const scrollDivRef = useRef();
     const classes = useStyles();
+
+    let width = useCurrentWidth();
 
     const handleMouseDown = e => {
         setDragging(true);
@@ -35,7 +36,7 @@ function HorizontalScrollContainer(props) {
         if (!dragging) return;
 
         const shift = scrollAmount + mousePosition.x - e.clientX;
-        if (shift > scrollDivScrollWidth - (scrollDivClientWidth)) {
+        if (shift > scrollDivScrollWidth - (scrollDivClientWidth) + 30) {
             return;
         }
 
@@ -50,15 +51,23 @@ function HorizontalScrollContainer(props) {
     }
 
     useEffect(() => {
-        // Get data relative to clients viewport
-        setScrollDivScrollWidth(scrollDivRef.current.scrollWidth);
+        setScrollAmount(0);
         setScrollDivClientWidth(scrollDivRef.current.clientWidth);
-    }, []);
+    }, [width]);
+
+    useEffect(() => {
+        setScrollDivScrollWidth(scrollDivRef.current.scrollWidth);
+    }, [itemsForContainer]);
+
+    useEffect(() => {
+        const updatedItems = convertDataForScrollContainer(content, CONTAINER_ITEM_LIMIT);
+        setItemsForContainer(updatedItems);
+    }, [content]);
 
     return(
         <>
             <div className={classes.text}>
-                My Shows
+                {collectionTitle}
             </div>
             <div 
                 ref={scrollDivRef}
@@ -73,8 +82,8 @@ function HorizontalScrollContainer(props) {
                     // Inline style to handle scroll amount (temporarily)
                     style={{ right: scrollAmount }}
                 >
-                    {tileData.map((tile) => (
-                        <img className={classes.imgDimensions} src={tile.img} alt={tile.title} />
+                    {itemsForContainer.map((item) => (
+                        <img className={classes.imgDimensions} src={item.img} alt={item.title} />
                     ))}
                 </div>
             </div>
