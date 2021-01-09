@@ -51,8 +51,14 @@ function HorizontalScrollContainer(props) {
                     // Inline style to handle scroll amount (temporarily)
                     style={{ right: scrollAmount }}
                 >
-                    {itemsForContainer.map((item, idx) => (
-                        <img key={item.title} className={classes.imgDimensions} src={item.img} alt={item.title} />
+                    {/* Key is not 100% unique yet */}
+                    {itemsForContainer.map((item) => (
+                        <img 
+                            key={item.title} 
+                            className={classes.img}
+                            src={item.img} 
+                            alt={item.title}
+                        />
                     ))}
                 </div>
             </div>
