@@ -1,15 +1,21 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
-    details: {
+    root : {
         height: '55vh',
+        display: 'flex',
+        alignItems: 'center'
+    },
+
+    details: {
         margin: '30px',
-        textAlign: 'left'
+        textAlign: 'left',
+        maxWidth: '40vw'
     },
 
     title: {
-      fontSize: 'calc(20px + 4vmin)',
-      fontWeightt: '600'
+        fontSize: 'calc(20px + 4vmin)',
+        fontWeightt: '600'
     },
 
     other: {
@@ -26,8 +32,7 @@ export const useStyles = makeStyles((theme) => ({
 
     description: {
         fontSize: 'calc(12px + 1vmin)',
-        fontWeight: '100',
-        maxWidth: '33vw'
+        fontWeight: '100'
     },
 
     heroActions: {
@@ -37,6 +42,7 @@ export const useStyles = makeStyles((theme) => ({
     button: {
       cursor: 'pointer',
       border: 'none',
+      outline: 'none',
       borderRadius: '4px',
       color: 'white',
       backgroundColor: 'red',
@@ -51,6 +57,7 @@ export const useStyles = makeStyles((theme) => ({
 
     disabledButton: {
       border: 'solid',
+      outline: 'none',
       borderRadius: '4px',
       borderWidth: 'thin',
       color: 'white',
