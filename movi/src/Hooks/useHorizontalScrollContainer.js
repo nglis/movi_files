@@ -34,7 +34,6 @@ function useHorizontalScrollContainer( { scrollDivRef } ) {
 
     const handleEndDrag = () => {
         if (!dragging) return;
-
         setDragging(false);
     }
 
