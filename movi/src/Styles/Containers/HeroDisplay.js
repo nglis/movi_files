@@ -4,7 +4,8 @@ export const useStyles = makeStyles((theme) => ({
     root : {
         height: '55vh',
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: 'black'
     },
 
     details: {
@@ -78,7 +79,13 @@ export const useStyles = makeStyles((theme) => ({
     playTextMargins: {
       marginLeft: '8px',
       marginRight: '8px'
-    }
+    },
 
+    preview: {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)'
+    }
   }
   ));

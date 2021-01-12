@@ -36,6 +36,9 @@ function HeroDisplay(props) {
                     </button>
                 </div>
             </div>
+            <div className={classes.preview}>
+                TEST TEXT
+            </div>
         </div>
     );
 }
