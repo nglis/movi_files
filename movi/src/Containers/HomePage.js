@@ -1,5 +1,6 @@
 import _ from 'lodash';
 
+import AppBar from './AppBar';
 import HeroDisplay from '../Components/HeroDisplay';
 import HorizontalScrollContainer from '../SubContainers/HorizontalScrollContainer';
 
@@ -27,9 +28,7 @@ function HomePage(props) {
 
     return(
         <div className="App">
-          <header>
-              MOVI
-          </header>
+          <AppBar />
           <HeroDisplay 
             details={heroData}
           />
