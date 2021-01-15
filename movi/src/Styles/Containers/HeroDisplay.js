@@ -81,11 +81,17 @@ export const useStyles = makeStyles((theme) => ({
       marginRight: '8px'
     },
 
-    preview: {
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)'
+    previewContainer: {
+      padding: '30px',
+      paddingLeft: '0px',
+      width: '53%',
+      height: '85%'
+    },
+    
+    previewVideo: {
+      border: 'none',
+      width: '100%',
+      height: '100%'
     }
   }
   ));

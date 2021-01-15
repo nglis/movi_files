@@ -9,7 +9,8 @@ import { getDataByGenre, getYearFromDate, removeTags } from '../Other/MovieDataH
 function HomePage(props) {
     const { data } = props;
 
-    const firstEntry = !_.isNil(data) && !_.isEmpty(data) ? data[0] : {};
+    const catalog = _.get(data, 'catalog');
+    const firstEntry = !_.isNil(catalog) && !_.isEmpty(catalog) ? catalog[0] : {};
 
     const title = _.get(firstEntry, 'name', 'Unknown Title');
     const date = _.get(firstEntry, 'premiered', '');
@@ -17,7 +18,7 @@ function HomePage(props) {
     const length = _.get(firstEntry, 'runtime', '');
     const description = _.get(firstEntry, 'summary', '');
 
-    const heroData = { 
+    const heroCatalogData = { 
       title,
       rating,
       length,
@@ -26,23 +27,27 @@ function HomePage(props) {
       description: removeTags(description)
     };
 
+    const video = _.get(data, 'preview');
+    const heroPreviewData = {};
+
     return(
         <div className="App">
           <AppBar />
           <HeroDisplay 
-            details={heroData}
+            details={heroCatalogData}
+            preview={heroPreviewData}
           />
           <HorizontalScrollContainer 
             collectionTitle="Drama"
-            content={getDataByGenre(data, "Drama")}
+            content={getDataByGenre(catalog, "Drama")}
           />
           <HorizontalScrollContainer 
             collectionTitle="Comedy"
-            content={getDataByGenre(data, "Comedy")}
+            content={getDataByGenre(catalog, "Comedy")}
           />
           <HorizontalScrollContainer 
             collectionTitle="Thriller"
-            content={getDataByGenre(data, "Thriller")}
+            content={getDataByGenre(catalog, "Thriller")}
           />
       </div>
     );

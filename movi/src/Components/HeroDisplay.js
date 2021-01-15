@@ -5,7 +5,7 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 function HeroDisplay(props) {
     const classes = useStyles();
 
-    const { details } = props;
+    const { details, video } = props;
 
     return (
         <div className={classes.root}>
@@ -36,8 +36,11 @@ function HeroDisplay(props) {
                     </button>
                 </div>
             </div>
-            <div className={classes.preview}>
-                TEST TEXT
+            <div className={classes.previewContainer}>
+                <iframe
+                    className={classes.previewVideo}
+                    src="https://www.youtube.com/embed/-LOmvVRbuIk"
+                />
             </div>
         </div>
     );
