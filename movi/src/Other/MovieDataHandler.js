@@ -40,8 +40,9 @@ export const generatePreviewData = previewData => {
     if (videoId === null) return null;
 
     const youtubePrefix = 'https://www.youtube.com/embed/';
+    const parameters = '?controls=0';
 
-    return { link: youtubePrefix + videoId };
+    return { link: youtubePrefix + videoId + parameters };
 }
 
 export const getEntryFromCatalogByIndex = (catalog, idx) => {
