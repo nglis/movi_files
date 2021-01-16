@@ -9,6 +9,10 @@ import { getDataByGenre, getYearFromDate, removeTags } from '../Other/MovieDataH
 function HomePage(props) {
     const { data } = props;
 
+    // TODO
+    const video = _.get(data, 'preview');
+    const heroPreviewData = {};
+
     const catalog = _.get(data, 'catalog');
     const firstEntry = !_.isNil(catalog) && !_.isEmpty(catalog) ? catalog[0] : {};
 
@@ -26,9 +30,6 @@ function HomePage(props) {
       year: getYearFromDate(date),
       description: removeTags(description)
     };
-
-    const video = _.get(data, 'preview');
-    const heroPreviewData = {};
 
     return(
         <div className="App">
