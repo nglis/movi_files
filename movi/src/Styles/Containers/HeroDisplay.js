@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
     root : {
-        height: '55vh',
+        height: '60vh',
         display: 'flex',
         alignItems: 'center',
         backgroundColor: 'black'
@@ -11,7 +11,7 @@ export const useStyles = makeStyles((theme) => ({
     details: {
         margin: '30px',
         textAlign: 'left',
-        maxWidth: '40vw'
+        maxWidth: '45%'
     },
 
     title: {
@@ -82,10 +82,11 @@ export const useStyles = makeStyles((theme) => ({
     },
 
     previewContainer: {
-      padding: '30px',
-      paddingLeft: '0px',
-      width: '53%',
-      height: '85%'
+      margin: '30px',
+      width: '55%',
+      height: '85%',
+      borderRadius: '10px',
+      overflow: 'hidden'
     },
     
     previewVideo: {
