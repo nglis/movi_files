@@ -39,7 +39,7 @@ export const generatePreviewData = previewData => {
     const videoId = _.get(previewData.items[0], 'id.videoId', null);
     if (videoId === null) return null;
 
-    const youtubePrefix = 'https://www.youtube.com/watch?v=';
+    const youtubePrefix = 'https://www.youtube.com/embed/';
 
     return { link: youtubePrefix + videoId };
 }
