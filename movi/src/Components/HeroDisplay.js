@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import { useStyles } from '../Styles/Containers/HeroDisplay.js';
 
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
@@ -5,7 +7,7 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 function HeroDisplay(props) {
     const classes = useStyles();
 
-    const { details, video } = props;
+    const { details, preview } = props;
 
     return (
         <div className={classes.root}>
@@ -37,10 +39,10 @@ function HeroDisplay(props) {
                 </div>
             </div>
             <div className={classes.previewContainer}>
-                <iframe
+                {!_.isNil(preview, 'link') && <iframe
                     className={classes.previewVideo}
-                    src="https://www.youtube.com/embed/-LOmvVRbuIk"
-                />
+                    src={preview.link}
+                />}
             </div>
         </div>
     );

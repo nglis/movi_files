@@ -4,32 +4,17 @@ import AppBar from './AppBar';
 import HeroDisplay from '../Components/HeroDisplay';
 import HorizontalScrollContainer from '../SubContainers/HorizontalScrollContainer';
 
-import { getDataByGenre, getYearFromDate, removeTags } from '../Other/MovieDataHandler';
+import { getDataByGenre, getEntryFromCatalogByIndex, generatePreviewData } from '../Other/MovieDataHandler';
 
 function HomePage(props) {
     const { data } = props;
 
     // TODO
-    const video = _.get(data, 'preview');
-    const heroPreviewData = {};
+    const videoData = _.get(data, 'preview');
+    const heroPreviewData = generatePreviewData(videoData);
 
     const catalog = _.get(data, 'catalog');
-    const firstEntry = !_.isNil(catalog) && !_.isEmpty(catalog) ? catalog[0] : {};
-
-    const title = _.get(firstEntry, 'name', 'Unknown Title');
-    const date = _.get(firstEntry, 'premiered', '');
-    const rating = _.get(firstEntry, 'rating.average', '');
-    const length = _.get(firstEntry, 'runtime', '');
-    const description = _.get(firstEntry, 'summary', '');
-
-    const heroCatalogData = { 
-      title,
-      rating,
-      length,
-      episode: '',
-      year: getYearFromDate(date),
-      description: removeTags(description)
-    };
+    const heroCatalogData = getEntryFromCatalogByIndex(catalog, 0);
 
     return(
         <div className="App">
