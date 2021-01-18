@@ -31,7 +31,6 @@ export const getDataByGenre = (data, genre) => {
 }
 
 export const generatePreviewData = previewData => {
-    console.log(previewData)
     if (_.isNil(previewData) || _.isNil(previewData.items) || previewData.items.length === 0) {
         return null;
     }
