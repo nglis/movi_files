@@ -54,30 +54,30 @@ function HomePage(props) {
   
       getData();
     }, []);
-
-    if (loading) {
-      return <CircularProgress />;
-    }
-
+    
     return(
         <div className="App">
-          <AppBar />
-          <HeroDisplay 
-            details={heroCatalogData}
-            preview={heroPreviewData}
-          />
-          <HorizontalScrollContainer 
-            collectionTitle="Drama"
-            content={getDataByGenre(catalog, "Drama")}
-          />
-          <HorizontalScrollContainer 
-            collectionTitle="Comedy"
-            content={getDataByGenre(catalog, "Comedy")}
-          />
-          <HorizontalScrollContainer 
-            collectionTitle="Thriller"
-            content={getDataByGenre(catalog, "Thriller")}
-          />
+          {loading ? <CircularProgress /> :
+          <>
+              <AppBar />
+              <HeroDisplay 
+                details={heroCatalogData}
+                preview={heroPreviewData}
+              />
+              <HorizontalScrollContainer 
+                collectionTitle="Drama"
+                content={getDataByGenre(catalog, "Drama")}
+              />
+              <HorizontalScrollContainer 
+                collectionTitle="Comedy"
+                content={getDataByGenre(catalog, "Comedy")}
+              />
+              <HorizontalScrollContainer 
+                collectionTitle="Thriller"
+                content={getDataByGenre(catalog, "Thriller")}
+              />
+            </>
+          }
       </div>
     );
 }
