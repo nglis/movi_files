@@ -1,14 +1,40 @@
+import React, { useState, useEffect } from 'react';
 import _ from 'lodash';
+import axios from 'axios';
 
 import { useStyles } from '../Styles/Containers/HeroDisplay.js';
 
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
 function HeroDisplay(props) {
+    const { details } = props;
+
     const classes = useStyles();
 
-    const { details, preview } = props;
-
+    const [videoData, setVideoData] = useState();
+    
+    useEffect(() => {
+        async function getData() {
+          let v = {};
+          await axios.get('https://www.googleapis.com/youtube/v3/search', 
+          {
+            params: {
+                q: newHeroCatalogData.title,
+                part: 'snippet',
+                type: "video",
+                maxResults: 1,
+                key: process.env.REACT_APP_YOUTUBE_API_KEY
+            }
+          }).then((res) => {
+            if (res.status !== 200) return;
+            v = res.data;
+          }); 
+          setVideoData(v);
+        }
+  
+        getData();
+    });
+      
     return (
         <div className={classes.root}>
             <div className={classes.details}>
