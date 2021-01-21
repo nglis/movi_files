@@ -23,9 +23,8 @@ function HeroDisplay(props) {
             {
                 params: generateYoutubeParams(details.title, 'snippet', 'video', 1, process.env.REACT_APP_YOUTUBE_API_KEY)
             }).then((res) => {
-                if (res.status !== 200) {
-                    setVideoData(res.data);
-                }
+                if (res.status !== 200) return;
+                setVideoData(res.data);
             }); 
         }
         getData();
