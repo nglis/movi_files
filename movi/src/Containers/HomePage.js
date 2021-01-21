@@ -13,31 +13,26 @@ import { getDataByGenre, getEntryFromCatalogByIndex } from '../Other/MovieDataHa
 
 function HomePage() {
     const [catalog, setCatalogData] = useState(null);
-    const [loadingCatalog, setLoadingCatalog] = useState(true);
     const [heroCatalogData, setHeroCatalogData] = useState(null);
 
     useEffect(() => {
       async function getData() {
          await axios.get('http://api.tvmaze.com/shows').then((res) => {
 
-          if (res.statusText === 'OK') {
-            setCatalogData(res.data);
-
+          if (res.statusText !== 'OK') return;
             const catalogItemIndex = Math.floor(Math.random() * res.data.length);
             const newHeroCatalogData = getEntryFromCatalogByIndex(res.data, catalogItemIndex);
             setHeroCatalogData(newHeroCatalogData);
-          }
-
-          setLoadingCatalog(false);
+            setCatalogData(res.data);
         });
       }
       
       getData();
     }, []);
-
+    
     return(
         <div className="App">
-          {loadingCatalog ? <CircularProgress /> :
+          {!catalog ? <CircularProgress /> :
           <>
               <AppBar />
               <HeroDisplay 

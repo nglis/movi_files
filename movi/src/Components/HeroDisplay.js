@@ -27,6 +27,7 @@ function HeroDisplay(props) {
                 setVideoData(res.data);
             }); 
         }
+        
         getData();
     }, []);
 
