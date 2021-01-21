@@ -6,13 +6,14 @@ import { useStyles } from '../Styles/Containers/HeroDisplay.js';
 
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
+import { generateYoutubeParams } from '../Other/MovieDataHandler';
+
 function HeroDisplay(props) {
     const { details } = props;
 
     const classes = useStyles();
 
     const [videoData, setVideoData] = useState(null);
-    const [loadingPreview, setLoadingPreview] = useState(true);
 
     useEffect(() => {
         async function getData() {
@@ -20,18 +21,11 @@ function HeroDisplay(props) {
 
             await axios.get('https://www.googleapis.com/youtube/v3/search', 
             {
-                params: {
-                    q: details.title,
-                    part: 'snippet',
-                    type: "video",
-                    maxResults: 1,
-                    key: process.env.REACT_APP_YOUTUBE_API_KEY
-                }
+                params: generateYoutubeParams(details.title, 'snippet', 'video', 1, process.env.REACT_APP_YOUTUBE_API_KEY)
             }).then((res) => {
                 if (res.status !== 200) {
                     setVideoData(res.data);
                 }
-                setLoadingPreview(false);
             }); 
         }
         getData();

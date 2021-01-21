@@ -86,3 +86,13 @@ export const convertDataForScrollContainer = (data, limit) => {
 
     return items;
 }
+
+export const generateYoutubeParams = (q, part, type, maxResults, key) => {
+    return {
+        q,
+        part,
+        type,
+        maxResults,
+        key
+    };
+}
