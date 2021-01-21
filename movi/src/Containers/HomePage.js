@@ -12,34 +12,32 @@ import HorizontalScrollContainer from '../SubContainers/HorizontalScrollContaine
 import { getDataByGenre, getEntryFromCatalogByIndex } from '../Other/MovieDataHandler';
 
 function HomePage() {
-    const [catalog, setCatalogData] = useState({});
-    const [heroCatalogData, setHeroCatalogData] = useState();
-
-    const [loading, setLoading] = useState(false);
+    const [catalog, setCatalogData] = useState(null);
+    const [loadingCatalog, setLoadingCatalog] = useState(true);
+    const [heroCatalogData, setHeroCatalogData] = useState(null);
 
     useEffect(() => {
       async function getData() {
          await axios.get('http://api.tvmaze.com/shows').then((res) => {
-          if (res.statusText !== 'OK') return;
-          setCatalogData(res.data);
+
+          if (res.statusText === 'OK') {
+            setCatalogData(res.data);
+
+            const catalogItemIndex = Math.floor(Math.random() * res.data.length);
+            const newHeroCatalogData = getEntryFromCatalogByIndex(res.data, catalogItemIndex);
+            setHeroCatalogData(newHeroCatalogData);
+          }
+
+          setLoadingCatalog(false);
         });
       }
       
       getData();
-      setLoading(true);
     }, []);
-
-    useEffect(() => {
-      const catalogItemIndex = Math.floor(Math.random() * catalog.length);
-      const newHeroCatalogData = getEntryFromCatalogByIndex(catalog, catalogItemIndex);
-
-      setHeroCatalogData(newHeroCatalogData);
-      setLoading(false);
-    }, [catalog]);
 
     return(
         <div className="App">
-          {loading ? <CircularProgress /> :
+          {loadingCatalog ? <CircularProgress /> :
           <>
               <AppBar />
               <HeroDisplay 
