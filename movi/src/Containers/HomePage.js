@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import _ from 'lodash';
 import axios from 'axios';
 
 import { CircularProgress } from '@material-ui/core';
@@ -29,7 +28,7 @@ function HomePage() {
       
       getData();
     }, []);
-    
+
     return(
         <div className="App">
           {!catalog ? <CircularProgress /> :
