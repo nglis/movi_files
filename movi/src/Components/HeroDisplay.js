@@ -11,30 +11,32 @@ function HeroDisplay(props) {
 
     const classes = useStyles();
 
-    const [videoData, setVideoData] = useState();
-    
+    const [videoData, setVideoData] = useState(null);
+    const [loadingPreview, setLoadingPreview] = useState(true);
+
     useEffect(() => {
         async function getData() {
-          let v = {};
-          await axios.get('https://www.googleapis.com/youtube/v3/search', 
-          {
-            params: {
-                q: newHeroCatalogData.title,
-                part: 'snippet',
-                type: "video",
-                maxResults: 1,
-                key: process.env.REACT_APP_YOUTUBE_API_KEY
-            }
-          }).then((res) => {
-            if (res.status !== 200) return;
-            v = res.data;
-          }); 
-          setVideoData(v);
+            if (_.isNil(details) || _.isNil(details.title)) return;
+
+            await axios.get('https://www.googleapis.com/youtube/v3/search', 
+            {
+                params: {
+                    q: details.title,
+                    part: 'snippet',
+                    type: "video",
+                    maxResults: 1,
+                    key: process.env.REACT_APP_YOUTUBE_API_KEY
+                }
+            }).then((res) => {
+                if (res.status !== 200) {
+                    setVideoData(res.data);
+                }
+                setLoadingPreview(false);
+            }); 
         }
-  
         getData();
-    });
-      
+    }, []);
+
     return (
         <div className={classes.root}>
             <div className={classes.details}>
@@ -65,9 +67,9 @@ function HeroDisplay(props) {
                 </div>
             </div>
             <div className={classes.previewContainer}>
-                {!_.isNil(preview, 'link') && <iframe
+                {videoData && <iframe
                     className={classes.previewVideo}
-                    src={preview.link}
+                    src={videoData.link}
                 />}
             </div>
         </div>
