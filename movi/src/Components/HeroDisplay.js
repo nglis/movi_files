@@ -13,7 +13,9 @@ function HeroDisplay(props) {
 
     const classes = useStyles();
 
+    // TODO: NO VIDEO DATA THEN DISPLAY IMAGE
     const [videoData, setVideoData] = useState(null);
+    const [videoDataUnavailable, setVideoDataUnavailable] = useState(false);
 
     useEffect(() => {
         async function getData() {
@@ -23,11 +25,14 @@ function HeroDisplay(props) {
             {
                 params: generateYoutubeParams(details.title, 'snippet', 'video', 1, process.env.REACT_APP_YOUTUBE_API_KEY)
             }).then((res) => {
-                if (res.status !== 200) return;
-                setVideoData(res.data);
+                if (res.status !== 200) {
+                    setVideoDataUnavailable(true);
+                } else {
+                    setVideoData(res.data);
+                }
             }); 
         }
-        
+
         getData();
     }, []);
 
@@ -61,6 +66,7 @@ function HeroDisplay(props) {
                 </div>
             </div>
             <div className={classes.previewContainer}>
+                {videoDataUnavailable && <></>}
                 {videoData && <iframe
                     className={classes.previewVideo}
                     src={videoData.link}
