@@ -54,7 +54,9 @@ export const getEntryFromCatalogByIndex = (catalog, idx) => {
     const date = _.get(entry, 'premiered', '');
     const rating = _.get(entry, 'rating.average', '');
     const length = _.get(entry, 'runtime', '');
-    const description = _.get(entry, 'summary', '');
+
+    let description = _.get(entry, 'summary', '');
+    description = trimStrToChars(description, 500);
 
     return { 
       title,
@@ -95,4 +97,10 @@ export const generateYoutubeParams = (q, part, type, maxResults, key) => {
         maxResults,
         key
     };
+}
+
+export const trimStrToChars = (str, chars) => {
+    if (!str || str.length < chars) return str;
+
+    return str.substring(0, chars) + '...';
 }
