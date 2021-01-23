@@ -30,6 +30,7 @@ export const getDataByGenre = (data, genre) => {
     return items;
 }
 
+// Creates a link and other data related to preview 
 export const generatePreviewData = previewData => {
     if (_.isNil(previewData) || _.isNil(previewData.items) || previewData.items.length === 0) {
         return null;
@@ -44,6 +45,7 @@ export const generatePreviewData = previewData => {
     return { link: youtubePrefix + videoId + parameters };
 }
 
+// Generates data a catalog entry at idx
 export const getEntryFromCatalogByIndex = (catalog, idx) => {
     let entry;
     if (!_.isNil(catalog) && !_.isEmpty(catalog) && idx < catalog.length) {
@@ -68,6 +70,7 @@ export const getEntryFromCatalogByIndex = (catalog, idx) => {
     };
 } 
 
+// Assigns a set of items to a list for scroll containers
 export const convertDataForScrollContainer = (data, limit) => {
     const items = [];
     if (!data || _.isEmpty(data)) return items;
@@ -99,6 +102,7 @@ export const generateYoutubeParams = (q, part, type, maxResults, key) => {
     };
 }
 
+// Time str to length (chars)
 export const trimStrToChars = (str, chars) => {
     if (!str || str.length < chars) return str;
 
