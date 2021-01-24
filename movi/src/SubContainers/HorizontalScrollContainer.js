@@ -23,8 +23,8 @@ function HorizontalScrollContainer(props) {
         setScrollDivScrollWidth
     } = useHorizontalScrollContainer( { scrollDivRef } );
 
-
     useEffect(() => {
+        // Test for different hook - not updating on initial render
         setScrollDivScrollWidth(scrollDivRef.current.scrollWidth);
     }, [itemsForContainer]);
 
