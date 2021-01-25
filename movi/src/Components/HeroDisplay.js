@@ -23,7 +23,7 @@ function HeroDisplay(props) {
 
             await axios.get('https://www.googleapis.com/youtube/v3/search', 
             {
-                params: generateYoutubeParams(details.title + ' trailer', 'snippet', 'video', 1, process.env.REACT_APP_YOUTUBE_API_KEY)
+                params: generateYoutubeParams(details.title + ' tv show trailer', 'snippet', 'video', 1, process.env.REACT_APP_YOUTUBE_API_KEY)
             }).then((res) => {
                 if (res.status !== 200) {
                     setVideoDataUnavailable(true);
