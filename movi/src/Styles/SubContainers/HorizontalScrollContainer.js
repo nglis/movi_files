@@ -12,6 +12,7 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-start'
   },
   img: {
+    cursor: 'pointer',
     maxHeight: '240px',
     marginRight: '8px',
     '&:hover': {
