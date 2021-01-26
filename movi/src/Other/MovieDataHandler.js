@@ -53,6 +53,8 @@ export const getEntryFromCatalogByIndex = (catalog, idx) => {
     }
 
     const title = _.get(entry, 'name', 'Unknown Title');
+    const genres = _.get(entry, 'genres', []);
+    const externals = _.get(entry, 'externals', {});
     const date = _.get(entry, 'premiered', '');
     const rating = _.get(entry, 'rating.average', '');
     const length = _.get(entry, 'runtime', '');
@@ -62,6 +64,8 @@ export const getEntryFromCatalogByIndex = (catalog, idx) => {
 
     return { 
       title,
+      genres,
+      externals,
       rating,
       length,
       episode: '',
