@@ -16,13 +16,13 @@ export const useStyles = makeStyles((theme) => ({
 
     title: {
         fontSize: 'calc(20px + 4vmin)',
-        fontWeightt: '600'
+        fontWeight: '600',
+        marginBottom: '20px'
     },
 
     other: {
         fontSize: 'calc(10px + 1vmin)',
-        marginLeft: '10px',
-        marginBottom: '15px'
+        marginBottom: '20px'
     },
 
     episode: {
@@ -33,7 +33,14 @@ export const useStyles = makeStyles((theme) => ({
 
     description: {
         fontSize: 'calc(12px + 1vmin)',
-        fontWeight: '100'
+        fontWeight: '100',
+        marginBottom: '20px'
+    },
+
+    additionalInfo: {
+      fontSize: 'calc(12px + 1vmin)',
+      fontWeight: '100',
+      marginBottom: '30px'
     },
 
     heroActions: {
@@ -50,7 +57,6 @@ export const useStyles = makeStyles((theme) => ({
       fontWeight: '600',
       width: '120px',
       height: '40px',
-      marginTop: '16px',
       '&:hover': {
         opacity: '0.8'
       }
@@ -66,7 +72,6 @@ export const useStyles = makeStyles((theme) => ({
       fontWeight: '600',
       width: '120px',
       height: '40px',
-      marginTop: '16px',
       marginLeft: '16px'
     },
 
