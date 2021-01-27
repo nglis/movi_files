@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import _ from 'lodash';
 import { convertDataForScrollContainer } from '../Other/MovieDataHandler';
 
 import { useStyles } from '../Styles/SubContainers/HorizontalScrollContainer';
@@ -24,9 +25,8 @@ function HorizontalScrollContainer(props) {
     } = useHorizontalScrollContainer( { scrollDivRef } );
 
     useEffect(() => {
-        // Test for different hook - not updating on initial render
         setScrollDivScrollWidth(scrollDivRef.current.scrollWidth);
-    }, [itemsForContainer]);
+    }, [_.get(scrollDivRef.current, 'scrollWidth', scrollDivRef.current)]);
 
     useEffect(() => {
         const updatedItems = convertDataForScrollContainer(content, CONTAINER_ITEM_LIMIT);
@@ -39,7 +39,6 @@ function HorizontalScrollContainer(props) {
                 {collectionTitle}
             </div>
             <div 
-                ref={scrollDivRef}
                 className={classes.root}
                 onMouseDown={e => handleMouseDown(e)}
                 onMouseMove={e => handleMouseMove(e)}
@@ -48,6 +47,7 @@ function HorizontalScrollContainer(props) {
             >
                 <div 
                     className={classes.scrollBox}
+                    ref={scrollDivRef}
                     // Inline style to handle scroll amount (temporarily)
                     style={{ right: scrollAmount }}
                 >
