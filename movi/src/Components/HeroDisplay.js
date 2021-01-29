@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import _ from 'lodash';
 import axios from 'axios';
 
-import { useStyles } from '../Styles/Containers/HeroDisplay.js';
+import { useStyles } from '../Styles/Components/HeroDisplay.js';
 
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
