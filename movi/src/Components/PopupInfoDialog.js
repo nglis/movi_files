@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { useStyles } from '../Styles/Containers/PopupInfoDialog.js';
+import { useStyles } from '../Styles/Components/PopupInfoDialog';
 
 function PopupInfoDialog (props) {
     const classes = useStyles();
 
-    const { setShowPopupInfoDialog } = props;
+    const { data, setShowPopupInfoDialog } = props;
 
     return (
         <div className={classes.root}>
