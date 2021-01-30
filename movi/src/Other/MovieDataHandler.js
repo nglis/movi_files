@@ -45,6 +45,13 @@ export const generatePreviewData = previewData => {
     return { link: youtubePrefix + videoId + parameters };
 }
 
+export const getHeroData = data => {
+    const catalogItemIndex = Math.floor(Math.random() * data.length);
+    const newHeroCatalogData = getEntryFromCatalogByIndex(data, catalogItemIndex);
+    
+    return newHeroCatalogData;
+}
+
 // Generates data a catalog entry at idx
 export const getEntryFromCatalogByIndex = (catalog, idx) => {
     let entry;
