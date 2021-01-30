@@ -6,12 +6,14 @@ import { useStyles } from '../Styles/Components/HeroDisplay.js';
 
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
-import { generateYoutubeParams, generatePreviewData } from '../Other/MovieDataHandler';
+import { generateYoutubeParams, generatePreviewData, getHeroData } from '../Other/MovieDataHandler';
 
 function HeroDisplay(props) {
-    const { details } = props;
+    const { data } = props;
 
     const classes = useStyles();
+
+    const [details, setDetails] = useState(getHeroData(data));
 
     // TODO: NO VIDEO DATA THEN DISPLAY IMAGE
     const [videoData, setVideoData] = useState(null);
