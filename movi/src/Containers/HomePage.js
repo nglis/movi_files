@@ -6,6 +6,7 @@ import { CircularProgress } from '@material-ui/core';
 
 import AppBar from './AppBar';
 import HeroDisplay from '../Components/HeroDisplay';
+import PopupInfoDialog from '..Components/PopupInfoDialog';
 import HorizontalScrollContainer from '../SubContainers/HorizontalScrollContainer';
 
 import { getDataByGenre, getEntryFromCatalogByIndex } from '../Other/MovieDataHandler';
@@ -13,6 +14,9 @@ import { getDataByGenre, getEntryFromCatalogByIndex } from '../Other/MovieDataHa
 function HomePage() {
     const [catalog, setCatalogData] = useState(null);
     const [heroCatalogData, setHeroCatalogData] = useState(null);
+
+    const [selection, setSelection] = useState(null);
+    const [showPopupInfoDialog, setShowPopupInfoDialog] = useState(false);
 
     useEffect(() => {
       async function getData() {
@@ -40,16 +44,24 @@ function HomePage() {
               <HorizontalScrollContainer 
                 collectionTitle="Drama"
                 content={getDataByGenre(catalog, "Drama")}
+                setSelection={setSelection}
               />
               <HorizontalScrollContainer 
                 collectionTitle="Comedy"
                 content={getDataByGenre(catalog, "Comedy")}
+                setSelection={setSelection}
               />
               <HorizontalScrollContainer 
                 collectionTitle="Thriller"
                 content={getDataByGenre(catalog, "Thriller")}
+                setSelection={setSelection}
               />
             </>
+          }
+          {showPopupInfoDialog && selection &&
+            <PopupInfoDialog 
+              dialogData={selection}
+            />
           }
       </div>
     );
