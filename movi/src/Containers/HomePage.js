@@ -6,14 +6,13 @@ import { CircularProgress } from '@material-ui/core';
 
 import AppBar from './AppBar';
 import HeroDisplay from '../Components/HeroDisplay';
-import PopupInfoDialog from '..Components/PopupInfoDialog';
+import PopupInfoDialog from '../Components/PopupInfoDialog';
 import HorizontalScrollContainer from '../SubContainers/HorizontalScrollContainer';
 
-import { getDataByGenre, getEntryFromCatalogByIndex } from '../Other/MovieDataHandler';
+import { getDataByGenre } from '../Other/MovieDataHandler';
 
 function HomePage() {
     const [catalog, setCatalogData] = useState(null);
-    const [heroCatalogData, setHeroCatalogData] = useState(null);
 
     const [selection, setSelection] = useState(null);
     const [showPopupInfoDialog, setShowPopupInfoDialog] = useState(false);
@@ -23,9 +22,6 @@ function HomePage() {
          await axios.get('http://api.tvmaze.com/shows').then((res) => {
 
           if (res.statusText !== 'OK') return;
-            const catalogItemIndex = Math.floor(Math.random() * res.data.length);
-            const newHeroCatalogData = getEntryFromCatalogByIndex(res.data, catalogItemIndex);
-            setHeroCatalogData(newHeroCatalogData);
             setCatalogData(res.data);
         });
       }
@@ -39,7 +35,7 @@ function HomePage() {
           <>
               <AppBar />
               <HeroDisplay 
-                details={heroCatalogData}
+                data={catalog}
               />
               <HorizontalScrollContainer 
                 collectionTitle="Drama"
