@@ -39,18 +39,21 @@ function HomePage() {
               />
               <HorizontalScrollContainer 
                 collectionTitle="Drama"
-                content={getDataByGenre(catalog, "Drama")}
                 setSelection={setSelection}
+                showDetails={setShowPopupInfoDialog}
+                content={getDataByGenre(catalog, "Drama", 20)}
               />
               <HorizontalScrollContainer 
                 collectionTitle="Comedy"
-                content={getDataByGenre(catalog, "Comedy")}
                 setSelection={setSelection}
+                showDetails={setShowPopupInfoDialog}
+                content={getDataByGenre(catalog, "Comedy", 20)}
               />
               <HorizontalScrollContainer 
                 collectionTitle="Thriller"
-                content={getDataByGenre(catalog, "Thriller")}
                 setSelection={setSelection}
+                showDetails={setShowPopupInfoDialog}
+                content={getDataByGenre(catalog, "Thriller", 20)}
               />
             </>
           }
