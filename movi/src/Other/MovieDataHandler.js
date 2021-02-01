@@ -16,14 +16,18 @@ export const removeTags = str => {
     return str.replace(/(<([^>]+)>)/gi, "");
 }
 
-export const getDataByGenre = (data, genre) => {
+export const getDataByGenre = (data, genre, size = -1) => {
     const items = [];
     if (!data || _.isEmpty(data)) return items;
 
+    let count = 0;
+
     for (let item of data) {
+        if (size != -1 && count >= size) break;
         const availableGenres = _.get(item, 'genres', []);
         if (availableGenres.includes(genre)) {
             items.push(item);
+            count++;
         }
     }
 
@@ -82,7 +86,7 @@ export const getEntryFromCatalogByIndex = (catalog, idx) => {
 } 
 
 // Assigns a set of items to a list for scroll containers
-export const convertDataForScrollContainer = (data, limit) => {
+/* export const convertDataForScrollContainer = (data, limit) => {
     const items = [];
     if (!data || _.isEmpty(data)) return items;
     for (let item of data) {
@@ -101,7 +105,7 @@ export const convertDataForScrollContainer = (data, limit) => {
     }
 
     return items;
-}
+} */
 
 export const generateYoutubeParams = (q, part, type, maxResults, key) => {
     return {
