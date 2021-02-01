@@ -9,9 +9,7 @@ import useHorizontalScrollContainer from '../Hooks/useHorizontalScrollContainer'
 const CONTAINER_ITEM_LIMIT = 20;
 
 function HorizontalScrollContainer(props) {
-    const { collectionTitle, content } = props;
-
-    const [itemsForContainer, setItemsForContainer] = useState([]);
+    const { collectionTitle, content, setSelection, showDetails } = props;
 
     const scrollDivRef = useRef();
     const classes = useStyles();
@@ -24,14 +22,19 @@ function HorizontalScrollContainer(props) {
         setScrollDivScrollWidth
     } = useHorizontalScrollContainer( { scrollDivRef } );
 
+    const handleSelection = item => {
+        setSelection(item);
+        showDetails(true);
+    }
+
     useEffect(() => {
         setScrollDivScrollWidth(scrollDivRef.current.scrollWidth);
     }, [_.get(scrollDivRef.current, 'scrollWidth', scrollDivRef.current)]);
 
-    useEffect(() => {
+    /* useEffect(() => {
         const updatedItems = convertDataForScrollContainer(content, CONTAINER_ITEM_LIMIT);
         setItemsForContainer(updatedItems);
-    }, [content]);
+    }, [content]); */
 
     return(
         <>
@@ -51,13 +54,13 @@ function HorizontalScrollContainer(props) {
                     // Inline style to handle scroll amount (temporarily)
                     style={{ right: scrollAmount }}
                 >
-                    {/* Key is not 100% unique yet */}
-                    {itemsForContainer.map((item) => (
+                    {content.map((item, idx) => (
                         <img 
-                            key={item.title} 
                             className={classes.img}
-                            src={item.img} 
-                            alt={item.title}
+                            key={collectionTitle + "-" + _.get(item, 'name', `movie-${idx}`)} 
+                            src={_.get(item, 'image.medium', null)} 
+                            alt={_.get(item, 'name', 'Unknown Title')}
+                            onClick={() => handleSelection(item)}
                         />
                     ))}
                 </div>
