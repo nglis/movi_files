@@ -31,11 +31,6 @@ function HorizontalScrollContainer(props) {
         setScrollDivScrollWidth(scrollDivRef.current.scrollWidth);
     }, [_.get(scrollDivRef.current, 'scrollWidth', scrollDivRef.current)]);
 
-    /* useEffect(() => {
-        const updatedItems = convertDataForScrollContainer(content, CONTAINER_ITEM_LIMIT);
-        setItemsForContainer(updatedItems);
-    }, [content]); */
-
     return(
         <>
             <div className={classes.text}>
