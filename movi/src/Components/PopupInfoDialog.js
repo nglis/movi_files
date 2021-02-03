@@ -9,7 +9,10 @@ function PopupInfoDialog (props) {
 
     return (
         <>
-            <div className={classes.background}/>
+            <div 
+                className={classes.background}
+                onClick={() => setShowPopupInfoDialog(false)}
+                />
             <div className={classes.container}>
                 Test
             </div>
