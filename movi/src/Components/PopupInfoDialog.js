@@ -8,9 +8,12 @@ function PopupInfoDialog (props) {
     const { data, setShowPopupInfoDialog } = props;
 
     return (
-        <div className={classes.root}>
-            EMPTY
-        </div>
+        <>
+            <div className={classes.background}/>
+            <div className={classes.container}>
+                Test
+            </div>
+        </>
     );
 }
 
