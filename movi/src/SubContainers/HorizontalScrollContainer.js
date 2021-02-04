@@ -6,8 +6,6 @@ import { useStyles } from '../Styles/SubContainers/HorizontalScrollContainer';
 
 import useHorizontalScrollContainer from '../Hooks/useHorizontalScrollContainer';
 
-const CONTAINER_ITEM_LIMIT = 20;
-
 function HorizontalScrollContainer(props) {
     const { collectionTitle, content, setSelection, showDetails } = props;
 
