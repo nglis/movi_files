@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import _ from 'lodash';
-import { convertDataForScrollContainer } from '../Other/MovieDataHandler';
 
 import { useStyles } from '../Styles/SubContainers/HorizontalScrollContainer';
 
+import useItemSelection from '../Hooks/useItemSelection';
 import useHorizontalScrollContainer from '../Hooks/useHorizontalScrollContainer';
 
 function HorizontalScrollContainer(props) {
@@ -20,10 +20,11 @@ function HorizontalScrollContainer(props) {
         setScrollDivScrollWidth
     } = useHorizontalScrollContainer( { scrollDivRef } );
 
-    const handleSelection = item => {
-        setSelection(item);
-        showDetails(true);
-    }
+    const {
+        handleItemMouseUp,
+        handleItemMouseDown,
+        handleItemMouseMove
+    } = useItemSelection( { setSelection, showDetails });
 
     useEffect(() => {
         setScrollDivScrollWidth(scrollDivRef.current.scrollWidth);
@@ -53,7 +54,9 @@ function HorizontalScrollContainer(props) {
                             key={collectionTitle + "-" + _.get(item, 'name', `movie-${idx}`)} 
                             src={_.get(item, 'image.medium', null)} 
                             alt={_.get(item, 'name', 'Unknown Title')}
-                            onClick={() => handleSelection(item)}
+                            onMouseUp={() => handleItemMouseUp(item)}
+                            onMouseDown={() => handleItemMouseDown()}
+                            onMouseMove={() => handleItemMouseMove()}
                         />
                     ))}
                 </div>
