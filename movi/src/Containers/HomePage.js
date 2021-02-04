@@ -11,6 +11,8 @@ import HorizontalScrollContainer from '../SubContainers/HorizontalScrollContaine
 
 import { getDataByGenre } from '../Other/MovieDataHandler';
 
+const categories = ["Drama", "Comedy", "Thriller"];
+
 function HomePage() {
     const [catalog, setCatalogData] = useState(null);
 
@@ -37,25 +39,15 @@ function HomePage() {
               <HeroDisplay 
                 data={catalog}
               />
-              <HorizontalScrollContainer 
-                collectionTitle="Drama"
-                setSelection={setSelection}
-                showDetails={setShowPopupInfoDialog}
-                content={getDataByGenre(catalog, "Drama", 20)}
-              />
-              <HorizontalScrollContainer 
-                collectionTitle="Comedy"
-                setSelection={setSelection}
-                showDetails={setShowPopupInfoDialog}
-                content={getDataByGenre(catalog, "Comedy", 20)}
-              />
-              <HorizontalScrollContainer 
-                collectionTitle="Thriller"
-                setSelection={setSelection}
-                showDetails={setShowPopupInfoDialog}
-                content={getDataByGenre(catalog, "Thriller", 20)}
-              />
-            </>
+              {categories.map(category => (
+                <HorizontalScrollContainer 
+                  collectionTitle={category}
+                  setSelection={setSelection}
+                  showDetails={setShowPopupInfoDialog}
+                  content={getDataByGenre(catalog, category, 20)}
+                />
+              ))}
+          </>
           }
           {showPopupInfoDialog && /*selection &&*/
             <PopupInfoDialog 
