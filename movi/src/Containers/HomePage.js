@@ -57,9 +57,10 @@ function HomePage() {
               />
             </>
           }
-          {showPopupInfoDialog && selection &&
+          {showPopupInfoDialog && /*selection &&*/
             <PopupInfoDialog 
               dialogData={selection}
+              setShowPopupInfoDialog={setShowPopupInfoDialog}
             />
           }
       </div>
