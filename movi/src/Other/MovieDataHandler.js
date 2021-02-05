@@ -85,6 +85,30 @@ export const getEntryFromCatalogByIndex = (catalog, idx) => {
     };
 } 
 
+// Generates data a catalog entry at idx
+export const generateEntry = entry => {
+    const title = _.get(entry, 'name', 'Unknown Title');
+    const genres = _.get(entry, 'genres', []);
+    const externals = _.get(entry, 'externals', {});
+    const date = _.get(entry, 'premiered', '');
+    const rating = _.get(entry, 'rating.average', '');
+    const length = _.get(entry, 'runtime', '');
+
+    let description = _.get(entry, 'summary', '');
+    description = trimStrToChars(description, 500);
+
+    return { 
+      title,
+      genres,
+      externals,
+      rating,
+      length,
+      episode: '',
+      year: getYearFromDate(date),
+      description: removeTags(description)
+    };
+} 
+
 // Assigns a set of items to a list for scroll containers
 /* export const convertDataForScrollContainer = (data, limit) => {
     const items = [];
