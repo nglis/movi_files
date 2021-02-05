@@ -31,6 +31,8 @@ function HomePage() {
       getData();
     }, []);
 
+    // TODO: Add a loading screen that actually looks like a loading screen
+
     return(
         <div className="App">
           {!catalog ? <CircularProgress /> :
