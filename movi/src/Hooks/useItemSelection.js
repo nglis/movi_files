@@ -5,6 +5,7 @@ function useItemSelection( { setSelection, showDetails }) {
     const [itemClicked, setItemClicked] = useState(false);
 
     const handleItemMouseUp = item => {
+        if (!itemClicked) return;
         if (!dragging) {
             setSelection(item);
             showDetails(true);
@@ -22,10 +23,16 @@ function useItemSelection( { setSelection, showDetails }) {
         setDragging(true);
     }
 
+    const handleItemMouseLeave = () => {
+        setDragging(false);
+        setItemClicked(false);
+    }
+
     return {
         handleItemMouseUp,
         handleItemMouseDown,
-        handleItemMouseMove
+        handleItemMouseMove,
+        handleItemMouseLeave
     };
 }
 

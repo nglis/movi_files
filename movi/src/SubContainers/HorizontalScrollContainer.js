@@ -23,7 +23,8 @@ function HorizontalScrollContainer(props) {
     const {
         handleItemMouseUp,
         handleItemMouseDown,
-        handleItemMouseMove
+        handleItemMouseMove,
+        handleItemMouseLeave
     } = useItemSelection( { setSelection, showDetails });
 
     useEffect(() => {
@@ -57,6 +58,7 @@ function HorizontalScrollContainer(props) {
                             onMouseUp={() => handleItemMouseUp(item)}
                             onMouseDown={() => handleItemMouseDown()}
                             onMouseMove={() => handleItemMouseMove()}
+                            onMouseLeave={() => handleItemMouseLeave()}
                         />
                     ))}
                 </div>
