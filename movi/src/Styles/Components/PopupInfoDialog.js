@@ -24,22 +24,89 @@ export const useStyles = makeStyles((theme) => ({
       transform: 'translate(-50%, -50%)',
       border: 'none',
       display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
       borderRadius: '10px'
     },
     
+    infoContainer: {
+      display: 'flex',
+      flexDirection: 'column'
+    },
+
     title: {
       fontSize: 'calc(20px + 4vmin)',
       fontWeight: '600',
-      marginBottom: '20px'
+      marginTop: '10px',
+      marginLeft: '30px',
+      textAlign: 'left'
+    },
+
+    other: {
+      fontSize: 'calc(10px + 1vmin)',
+      fontWeight: '300',
+      marginTop: '20px',
+      marginLeft: '30px',
+      textAlign: 'left'
     },
 
     description: {
       fontSize: 'calc(10px + 1vmin)',
-      margin: '5px',
-      marginTop: 0,
-      textAlign: 'center'
+      fontWeight: '300',
+      marginTop: '15px',
+      marginLeft: '30px',
+      marginRight: '15px',
+      textAlign: 'left'
+    },
+
+    additionalInfo: {
+      marginTop: '15px',
+      marginLeft: '30px',
+      textAlign: 'left'
+    },
+    
+    button: {
+      cursor: 'pointer',
+      border: 'none',
+      outline: 'none',
+      borderRadius: '4px',
+      color: 'white',
+      backgroundColor: 'red',
+      fontWeight: '600',
+      width: '120px',
+      height: '40px',
+      '&:hover': {
+        opacity: '0.8'
+      }
+    },
+
+    disabledButton: {
+      border: 'solid',
+      outline: 'none',
+      borderRadius: '4px',
+      borderWidth: 'thin',
+      color: 'white',
+      backgroundColor: 'inherit',
+      fontWeight: '600',
+      width: '120px',
+      height: '40px',
+      marginLeft: '16px'
+    },
+
+    flexRowCentered: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+
+    playTextMargins: {
+      marginLeft: '8px',
+      marginRight: '8px'
+    },
+
+    img: {
+      margin: 'auto',
+      marginTop: '30px',
+      marginLeft: '15px',
+      marginRight: '30px'
     }
   }
   ));
