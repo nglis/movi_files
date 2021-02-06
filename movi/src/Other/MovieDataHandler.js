@@ -90,9 +90,11 @@ export const generateEntry = entry => {
     const title = _.get(entry, 'name', 'Unknown Title');
     const genres = _.get(entry, 'genres', []);
     const externals = _.get(entry, 'externals', {});
+    const img = _.get(entry, 'image.medium', null);
     const date = _.get(entry, 'premiered', '');
     const rating = _.get(entry, 'rating.average', '');
     const length = _.get(entry, 'runtime', '');
+
 
     let description = _.get(entry, 'summary', '');
     description = trimStrToChars(description, 500);
@@ -101,6 +103,7 @@ export const generateEntry = entry => {
       title,
       genres,
       externals,
+      img,
       rating,
       length,
       episode: '',
