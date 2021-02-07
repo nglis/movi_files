@@ -33,7 +33,7 @@ export const useStyles = makeStyles((theme) => ({
     },
 
     title: {
-      fontSize: 'calc(20px + 4vmin)',
+      fontSize: 'calc(20px + 2vmin)',
       fontWeight: '600',
       marginTop: '10px',
       marginLeft: '30px',
@@ -62,6 +62,13 @@ export const useStyles = makeStyles((theme) => ({
       marginTop: '15px',
       marginLeft: '30px',
       textAlign: 'left'
+    },
+
+    buttons: {
+      display: 'flex',
+      margin: 'auto',
+      marginLeft: '30px',
+      marginBottom: '30px'
     },
     
     button: {
