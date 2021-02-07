@@ -56,36 +56,17 @@ export const getHeroData = data => {
     return newHeroCatalogData;
 }
 
-// Generates data a catalog entry at idx
+// Generates data from catalog entry at idx
 export const getEntryFromCatalogByIndex = (catalog, idx) => {
     let entry;
     if (!_.isNil(catalog) && !_.isEmpty(catalog) && idx < catalog.length) {
         entry = catalog[idx];
     }
 
-    const title = _.get(entry, 'name', 'Unknown Title');
-    const genres = _.get(entry, 'genres', []);
-    const externals = _.get(entry, 'externals', {});
-    const date = _.get(entry, 'premiered', '');
-    const rating = _.get(entry, 'rating.average', '');
-    const length = _.get(entry, 'runtime', '');
-
-    let description = _.get(entry, 'summary', '');
-    description = trimStrToChars(description, 500);
-
-    return { 
-      title,
-      genres,
-      externals,
-      rating,
-      length,
-      episode: '',
-      year: getYearFromDate(date),
-      description: removeTags(description)
-    };
+    return generateEntry(entry);
 } 
 
-// Generates data a catalog entry at idx
+// Generates data for given catalog entry 
 export const generateEntry = (entry, descriptionMaxLength = 500) => {
     const title = _.get(entry, 'name', 'Unknown Title');
     const genres = _.get(entry, 'genres', []);
