@@ -58,6 +58,7 @@ export const useStyles = makeStyles((theme) => ({
     },
 
     additionalInfo: {
+      fontSize: 'calc(10px + 1vmin)',
       marginTop: '15px',
       marginLeft: '30px',
       textAlign: 'left'
@@ -104,7 +105,7 @@ export const useStyles = makeStyles((theme) => ({
 
     img: {
       margin: 'auto',
-      marginTop: '30px',
+      marginTop: '50px',
       marginLeft: '15px',
       marginRight: '30px'
     }

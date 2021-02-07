@@ -10,7 +10,9 @@ function PopupInfoDialog (props) {
     const classes = useStyles();
 
     const { dialogData, setShowPopupInfoDialog } = props;
-    const data = generateEntry(dialogData);
+    const data = generateEntry(dialogData, 300);
+
+    // TODO: Add redirect buttons below img for website like imdb etc.
 
     console.log(data)
 
