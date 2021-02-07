@@ -86,7 +86,7 @@ export const getEntryFromCatalogByIndex = (catalog, idx) => {
 } 
 
 // Generates data a catalog entry at idx
-export const generateEntry = entry => {
+export const generateEntry = (entry, descriptionMaxLength = 500) => {
     const title = _.get(entry, 'name', 'Unknown Title');
     const genres = _.get(entry, 'genres', []);
     const externals = _.get(entry, 'externals', {});
@@ -97,7 +97,7 @@ export const generateEntry = entry => {
 
 
     let description = _.get(entry, 'summary', '');
-    description = trimStrToChars(description, 500);
+    description = trimStrToChars(description, descriptionMaxLength);
 
     return { 
       title,
