@@ -111,10 +111,20 @@ export const useStyles = makeStyles((theme) => ({
     },
 
     img: {
-      margin: 'auto',
       marginTop: '50px',
       marginLeft: '15px',
       marginRight: '30px'
+    },
+
+    imdbContainer: {
+      textAlign: 'left'
+    },
+
+    imdb: {
+      height: '30px',
+      width: 'auto',
+      marginTop: '5px',
+      marginLeft: '15px'
     }
   }
   ));

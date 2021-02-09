@@ -1,9 +1,10 @@
 import React from 'react';
+import _ from 'lodash';
 
+import imdbLogo from '../static/imdb.jpg';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
 import { useStyles } from '../Styles/Components/PopupInfoDialog';
-
 import { generateEntry } from '../Other/MovieDataHandler';
 
 function PopupInfoDialog (props) {
@@ -35,7 +36,7 @@ function PopupInfoDialog (props) {
                     </div>
                     {data.genres != [] && 
                         <div className={classes.additionalInfo}>
-                            <b>Genres:</b> {data.genres.join(' - ')}
+                            <b>Genres:</b> {data.genres.join(', ')}
                         </div>
                     }
                     <div className={classes.buttons}>
@@ -52,12 +53,24 @@ function PopupInfoDialog (props) {
                         </button>
                     </div>
                 </div>
-                <img 
-                    className={classes.img}
-                    key={data.title} 
-                    src={data.img} 
-                    alt={data.title}
-                />
+                <div className={classes.secondaryContainer}>
+                    <img 
+                        className={classes.img}
+                        key={data.title} 
+                        src={data.img} 
+                        alt={data.title}
+                    />
+                    {_.get(data, 'externals.imdb') && <div className={classes.imdbContainer}>
+                        <a href={`https://www.imdb.com/title/${data.externals.imdb}/`} target="_blank" rel="noopener noreferrer">
+                            <img 
+                                className={classes.imdb}
+                                key="imdb-button" 
+                                src={imdbLogo} 
+                                alt="View on IMDb"
+                            />
+                        </a>
+                    </div>}
+                </div>
             </div>
         </>
     );
