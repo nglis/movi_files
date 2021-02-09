@@ -56,7 +56,7 @@ function HeroDisplay(props) {
                 </div>
                 {details.genres != [] && 
                     <div className={classes.additionalInfo}>
-                        <b>Genres:</b> {details.genres.join(' - ')}
+                        <b>Genres:</b> {details.genres.join(', ')}
                     </div>
                 }
                 <div className={classes.heroActions}>
