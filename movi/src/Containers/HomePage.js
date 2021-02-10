@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import axios from 'axios';
 
+import { useStyles } from '../Styles/Containers/HomePage.js';
 import { CircularProgress } from '@material-ui/core';
 
 import AppBar from './AppBar';
@@ -14,6 +15,8 @@ import { getDataByGenre } from '../Other/MovieDataHandler';
 const categories = ["Drama", "Comedy", "Thriller"];
 
 function HomePage() {
+    const classes = useStyles();
+
     const [catalog, setCatalogData] = useState(null);
 
     const [selection, setSelection] = useState(null);
@@ -31,11 +34,16 @@ function HomePage() {
       getData();
     }, []);
 
-    // TODO: Add a loading screen that actually looks like a loading screen
-
     return(
         <div className="App">
-          {!catalog ? <CircularProgress /> :
+          {!catalog ? 
+            <div className={classes.fullPageSpinnerContainer}>
+              <CircularProgress 
+                size="4em"
+                thickness="5"
+                style={{ color: 'grey' }}
+              />
+            </div> :
           <>
               <AppBar />
               <HeroDisplay 
