@@ -1,6 +1,12 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
+    dialogContainer: {
+      position: 'fixed',
+      top: '50%',
+      left: '50%',
+    },
+
     background : {
       opacity: 0.5,
       background: '#000', 
