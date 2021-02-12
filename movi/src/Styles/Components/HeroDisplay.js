@@ -5,7 +5,10 @@ export const useStyles = makeStyles((theme) => ({
         height: 'auto',
         display: 'flex',
         alignItems: 'center',
-        backgroundColor: 'black'
+        backgroundColor: 'black',
+        marginBottom: '30px',
+        paddingTop: '30px',
+        paddingBottom: '30px'
     },
 
     details: {
