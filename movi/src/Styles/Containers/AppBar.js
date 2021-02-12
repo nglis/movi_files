@@ -7,7 +7,7 @@ export const useStyles = makeStyles((theme) => ({
         fontSize: '70px',
         fontWeight: '850',
         color: 'silver',
-        marginLeft: '30px'
+        paddingLeft: '30px'
     },
   })
 );
