@@ -12,7 +12,7 @@ function Footer () {
                 Share buttons will go here
             </div>
             <div className={classes.footerShareNavigation}>
-                Navigation links will go here
+                Home
             </div>
         </div>
         <div className={classes.footer}>
