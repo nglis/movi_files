@@ -12,6 +12,12 @@ export const useStyles = makeStyles((theme) => ({
       padding: '15px'
     },
 
+    shareButton : {
+      fontSize: '40px', 
+      padding: '10px', 
+      cursor: 'pointer'
+    },
+
     footerShareTextUpper: { 
       fontSize: '15px',
       fontWeight: '700'
