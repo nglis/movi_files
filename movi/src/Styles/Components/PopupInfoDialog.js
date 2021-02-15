@@ -20,12 +20,16 @@ export const useStyles = makeStyles((theme) => ({
 
     container: {
       width: '25em',
-      height: '15em',
+      height: 'auto',
       position: 'absolute',
       background: '#1c1c1c', 
       top: '50%',
       left: '50%',
       margin: 0,
+      paddingTop: '10px',
+      paddingBottom: '10px',
+      paddingRight: '30px',
+      paddingLeft: '30px',
       zIndex: 10,
       transform: 'translate(-50%, -50%)',
       border: 'none',
@@ -41,8 +45,6 @@ export const useStyles = makeStyles((theme) => ({
     title: {
       fontSize: 'calc(20px + 2vmin)',
       fontWeight: '600',
-      marginTop: '10px',
-      marginLeft: '30px',
       textAlign: 'left'
     },
 
@@ -50,7 +52,6 @@ export const useStyles = makeStyles((theme) => ({
       fontSize: 'calc(10px + 1vmin)',
       fontWeight: '300',
       marginTop: '20px',
-      marginLeft: '30px',
       textAlign: 'left'
     },
 
@@ -58,7 +59,6 @@ export const useStyles = makeStyles((theme) => ({
       fontSize: 'calc(10px + 1vmin)',
       fontWeight: '300',
       marginTop: '15px',
-      marginLeft: '30px',
       marginRight: '15px',
       textAlign: 'left'
     },
@@ -66,14 +66,12 @@ export const useStyles = makeStyles((theme) => ({
     additionalInfo: {
       fontSize: 'calc(10px + 1vmin)',
       marginTop: '15px',
-      marginLeft: '30px',
       textAlign: 'left'
     },
 
     buttons: {
       display: 'flex',
       margin: 'auto',
-      marginLeft: '30px',
       marginBottom: '30px'
     },
     
@@ -119,7 +117,6 @@ export const useStyles = makeStyles((theme) => ({
     img: {
       marginTop: '50px',
       marginLeft: '15px',
-      marginRight: '30px'
     },
 
     imdbContainer: {
