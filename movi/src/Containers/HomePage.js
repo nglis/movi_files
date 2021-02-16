@@ -15,6 +15,8 @@ import { getDataByGenre } from '../Other/MovieDataHandler';
 
 const categories = ["Drama", "Comedy", "Thriller"];
 
+// TODO: Separate pages out into one primary container
+
 function HomePage() {
     const classes = useStyles();
 
