@@ -19,9 +19,9 @@ function Footer () {
                 <TwitterIcon className={classes.shareButton}/>
                 <WhatsAppIcon className={classes.shareButton}/>
             </div>
-            <div className={classes.footerShareNavigation}>
+            {/*<div className={classes.footerShareNavigation}>
                 Home
-            </div>
+            </div>*/}
         </div>
         <div className={classes.footer}>
             <div className={classes.footerShareTextUpper}>
