@@ -30,7 +30,7 @@ function PopupInfoDialog (props) {
                     <div className={classes.description}>
                         {data.description}
                     </div>
-                    {data.genres != [] && 
+                    {data.genres !== [] && 
                         <div className={classes.additionalInfo}>
                             <b>Genres:</b> {data.genres.join(', ')}
                         </div>

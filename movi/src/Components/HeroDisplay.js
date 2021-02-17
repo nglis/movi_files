@@ -54,7 +54,7 @@ function HeroDisplay(props) {
                 <div className={classes.description}>
                     {details.description}
                 </div>
-                {details.genres != [] && 
+                {details.genres !== [] && 
                     <div className={classes.additionalInfo}>
                         <b>Genres:</b> {details.genres.join(', ')}
                     </div>

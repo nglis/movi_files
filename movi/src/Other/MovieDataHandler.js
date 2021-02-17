@@ -23,7 +23,7 @@ export const getDataByGenre = (data, genre, size = -1) => {
     let count = 0;
 
     for (let item of data) {
-        if (size != -1 && count >= size) break;
+        if (size !== -1 && count >= size) break;
         const availableGenres = _.get(item, 'genres', []);
         if (availableGenres.includes(genre)) {
             items.push(item);
