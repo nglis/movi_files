@@ -15,8 +15,6 @@ import { getDataByGenre } from '../Other/MovieDataHandler';
 
 const categories = ["Drama", "Comedy", "Thriller"];
 
-// TODO: Separate pages out into one primary container
-
 function HomePage() {
     const classes = useStyles();
 
@@ -38,7 +36,7 @@ function HomePage() {
     }, []);
 
     return(
-        <div className="App">
+        <>
           {!catalog ? 
             <div className={classes.fullPageSpinnerContainer}>
               <CircularProgress 
@@ -48,7 +46,6 @@ function HomePage() {
               />
             </div> :
           <>
-              <AppBar />
               <HeroDisplay 
                 data={catalog}
               />
@@ -60,7 +57,6 @@ function HomePage() {
                   content={getDataByGenre(catalog, category, 20)}
                 />
               ))}
-              <Footer />
           </>
           }
           {showPopupInfoDialog && selection &&
@@ -69,7 +65,7 @@ function HomePage() {
               setShowPopupInfoDialog={setShowPopupInfoDialog}
             />
           }
-      </div>
+      </>
     );
 }
 
