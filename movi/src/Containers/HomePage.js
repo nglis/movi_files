@@ -5,8 +5,6 @@ import axios from 'axios';
 import { useStyles } from '../Styles/Containers/HomePage.js';
 import { CircularProgress } from '@material-ui/core';
 
-import AppBar from './AppBar';
-import Footer from './Footer';
 import HeroDisplay from '../Components/HeroDisplay';
 import PopupInfoDialog from '../Components/PopupInfoDialog';
 import HorizontalScrollContainer from '../SubContainers/HorizontalScrollContainer';
