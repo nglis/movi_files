@@ -11,7 +11,7 @@ import HorizontalScrollContainer from '../SubContainers/HorizontalScrollContaine
 
 import { getDataByGenre } from '../Other/MovieDataHandler';
 
-const categories = ["Drama", "Comedy", "Thriller"];
+const categories = ["Drama", "Comedy", "Thriller", "Horror", "Action", "Crime", "Romance"];
 
 function HomePage() {
     const classes = useStyles();
