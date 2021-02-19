@@ -1,5 +1,6 @@
 import React from 'react';
 
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { useStyles } from '../Styles/Containers/AppBar.js';
 
 function AppBar () {
@@ -7,7 +8,12 @@ function AppBar () {
 
     return (
         <div className={classes.root}>
-            MOVI
+            <div className={classes.title}>
+                MOVI
+            </div>
+            <div className={classes.navButtons}>
+                <AccountCircleIcon fontSize='inherit'/>
+            </div>
         </div>
     );
 }
