@@ -1,23 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import './App.css';
-import HomePage from './Containers/HomePage';
-
-import axios from 'axios';
+import MainContainer from './Containers/MainContainer';
 
 function App() {
-  const [test, setTest] = useState('hello');
-
-  /* useEffect(() => {
-    axios.get('/api/v1/say-something').then((res) => {
-      const response = res.data.body;
-      setTest(response);
-      console.log(res)
-    });
-  }, []); */
-
   return (
-    <HomePage />
+    <MainContainer />
   );
 }
 
