@@ -49,7 +49,9 @@ export const generatePreviewData = previewData => {
     return { link: youtubePrefix + videoId + parameters };
 }
 
-export const getHeroData = data => {
+export const getHeroData = rawData => {
+    const data = dataPath(rawData);
+
     const catalogItemIndex = Math.floor(Math.random() * data.length);
     const newHeroCatalogData = getEntryFromCatalogByIndex(data, catalogItemIndex);
     
@@ -68,16 +70,18 @@ export const getEntryFromCatalogByIndex = (catalog, idx, descriptionMaxLength = 
 
 // Generates data for given catalog entry 
 export const generateEntry = (entry, descriptionMaxLength) => {
-    const title = _.get(entry, 'name', 'Unknown Title');
-    const genres = _.get(entry, 'genres', []);
-    const externals = _.get(entry, 'externals', {});
-    const img = _.get(entry, 'image.medium', null);
-    const date = _.get(entry, 'premiered', '');
-    const rating = _.get(entry, 'rating.average', '');
-    const length = _.get(entry, 'runtime', '');
+    const pathToData = dataPath(entry);
+
+    const title = _.get(pathToData, 'name', 'Unknown Title');
+    const genres = _.get(pathToData, 'genres', []);
+    const externals = _.get(pathToData, 'externals', {});
+    const img = _.get(pathToData, 'image.medium', null);
+    const date = _.get(pathToData, 'premiered', '');
+    const rating = _.get(pathToData, 'rating.average', '');
+    const length = _.get(pathToData, 'runtime', '');
 
 
-    let description = _.get(entry, 'summary', '');
+    let description = _.get(pathToData, 'summary', '');
     description = trimStrToChars(description, descriptionMaxLength);
 
     return { 
@@ -130,4 +134,8 @@ export const trimStrToChars = (str, chars) => {
     if (!str || str.length < chars) return str;
 
     return str.substring(0, chars) + '...';
+}
+
+export const dataPath = (data) => {
+    return _.get(data, '_embedded.show');
 }
