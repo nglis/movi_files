@@ -23,7 +23,7 @@ function HomePage() {
 
     useEffect(() => {
       async function getData() {
-         await axios.get('http://api.tvmaze.com/shows').then((res) => {
+         await axios.get('http://api.tvmaze.com/schedule/full').then((res) => {
 
           if (res.statusText !== 'OK') return;
             setCatalogData(res.data);
@@ -39,7 +39,7 @@ function HomePage() {
             <div className={classes.fullPageSpinnerContainer}>
               <CircularProgress 
                 size="4em"
-                thickness="5"
+                thickness={5}
                 style={{ color: 'grey' }}
               />
             </div> :
