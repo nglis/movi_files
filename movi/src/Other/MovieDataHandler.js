@@ -1,19 +1,7 @@
 import _ from "lodash";
 
-// Date is stored in YYYY-MM-DD format
-export const getYearFromDate = date => {
-    if (!date || date === '') return '';
-    
-    const splitDate = date.split("-");
-    if (!splitDate[0]) return;
-
-    return splitDate[0];
-}
-
-// Remove HTML tags from a string
-export const removeTags = str => {
-    if (!str || str === '') return '';
-    return str.replace(/(<([^>]+)>)/gi, "");
+export const dataPath = (data) => {
+    return _.get(data, '_embedded.show');
 }
 
 export const getDataByGenre = (data, genre, size = -1) => {
@@ -22,11 +10,12 @@ export const getDataByGenre = (data, genre, size = -1) => {
 
     let count = 0;
 
-    for (let item of data) {
+    for (let rawEntry of data) {
+        const entry = generateEntry(rawEntry, 500);
         if (size !== -1 && count >= size) break;
-        const availableGenres = _.get(item, 'genres', []);
+        const availableGenres = _.get(entry, 'genres', []);
         if (availableGenres.includes(genre)) {
-            items.push(item);
+            items.push(entry);
             count++;
         }
     }
@@ -49,9 +38,7 @@ export const generatePreviewData = previewData => {
     return { link: youtubePrefix + videoId + parameters };
 }
 
-export const getHeroData = rawData => {
-    const data = dataPath(rawData);
-
+export const getHeroData = data => {
     const catalogItemIndex = Math.floor(Math.random() * data.length);
     const newHeroCatalogData = getEntryFromCatalogByIndex(data, catalogItemIndex);
     
@@ -97,28 +84,6 @@ export const generateEntry = (entry, descriptionMaxLength) => {
     };
 } 
 
-// Assigns a set of items to a list for scroll containers
-/* export const convertDataForScrollContainer = (data, limit) => {
-    const items = [];
-    if (!data || _.isEmpty(data)) return items;
-    for (let item of data) {
-        if (items.length === limit) break;
-        const img = _.get(item, 'image.medium', null);
-        const title = _.get(item, 'name', '');
-
-        if (!img || !title) continue;
-
-        items.push(
-            {
-                img,
-                title
-            }
-        );
-    }
-
-    return items;
-} */
-
 export const generateYoutubeParams = (q, part, type, maxResults, key) => {
     return {
         q,
@@ -129,6 +94,8 @@ export const generateYoutubeParams = (q, part, type, maxResults, key) => {
     };
 }
 
+/* String handling */
+
 // Time str to length (chars)
 export const trimStrToChars = (str, chars) => {
     if (!str || str.length < chars) return str;
@@ -136,6 +103,18 @@ export const trimStrToChars = (str, chars) => {
     return str.substring(0, chars) + '...';
 }
 
-export const dataPath = (data) => {
-    return _.get(data, '_embedded.show');
+// Date is stored in YYYY-MM-DD format
+export const getYearFromDate = date => {
+    if (!date || date === '') return '';
+    
+    const splitDate = date.split("-");
+    if (!splitDate[0]) return;
+
+    return splitDate[0];
+}
+
+// Remove HTML tags from a string
+export const removeTags = str => {
+    if (!str || str === '') return '';
+    return str.replace(/(<([^>]+)>)/gi, "");
 }
