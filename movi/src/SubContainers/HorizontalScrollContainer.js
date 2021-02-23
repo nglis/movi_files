@@ -52,9 +52,9 @@ function HorizontalScrollContainer(props) {
                     {content.map((item, idx) => (
                         <img 
                             className={classes.img}
-                            key={collectionTitle + "-" + _.get(item, 'name', `movie-${idx}`)} 
-                            src={_.get(item, 'image.medium', null)} 
-                            alt={_.get(item, 'name', 'Unknown Title')}
+                            key={collectionTitle + "-" + _.get(item, 'title', `movie-${idx}`)} 
+                            src={_.get(item, 'img', null)} 
+                            alt={_.get(item, 'title', 'Unknown Title')}
                             onMouseUp={() => handleItemMouseUp(item)}
                             onMouseDown={() => handleItemMouseDown()}
                             onMouseMove={() => handleItemMouseMove()}
