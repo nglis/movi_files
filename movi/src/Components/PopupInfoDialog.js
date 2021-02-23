@@ -5,13 +5,11 @@ import imdbLogo from '../static/imdb.jpg';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
 import { useStyles } from '../Styles/Components/PopupInfoDialog';
-import { generateEntry } from '../Other/MovieDataHandler';
 
 function PopupInfoDialog (props) {
     const classes = useStyles();
 
     const { dialogData, setShowPopupInfoDialog } = props;
-    const data = generateEntry(dialogData, 300);
 
     return (
         <div className={classes.dialogContainer}>
@@ -22,17 +20,17 @@ function PopupInfoDialog (props) {
             <div className={classes.container}>
                 <div className={classes.infoContainer}>
                     <div className={classes.title}>
-                        {data.title}
+                        {dialogData.title}
                     </div>
                     <div className={classes.other}>
-                        {data.year} | {data.rating}/10 | {data.length} min
+                        {dialogData.year} | {dialogData.rating || '-'}/10 | {dialogData.length} min
                     </div>
                     <div className={classes.description}>
-                        {data.description}
+                        {dialogData.description}
                     </div>
-                    {data.genres !== [] && 
+                    {dialogData.genres !== [] && 
                         <div className={classes.additionalInfo}>
-                            <b>Genres:</b> {data.genres.join(', ')}
+                            <b>Genres:</b> {dialogData.genres.join(', ')}
                         </div>
                     }
                     <div className={classes.buttons}>
@@ -52,12 +50,12 @@ function PopupInfoDialog (props) {
                 <div className={classes.secondaryContainer}>
                     <img 
                         className={classes.img}
-                        key={data.title} 
-                        src={data.img} 
-                        alt={data.title}
+                        key={dialogData.title} 
+                        src={dialogData.img} 
+                        alt={dialogData.title}
                     />
-                    {_.get(data, 'externals.imdb') && <div className={classes.imdbContainer}>
-                        <a href={`https://www.imdb.com/title/${data.externals.imdb}/`} target="_blank" rel="noopener noreferrer">
+                    {_.get(dialogData, 'externals.imdb') && <div className={classes.imdbContainer}>
+                        <a href={`https://www.imdb.com/title/${dialogData.externals.imdb}/`} target="_blank" rel="noopener noreferrer">
                             <img 
                                 className={classes.imdb}
                                 key="imdb-button" 
