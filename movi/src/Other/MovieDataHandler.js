@@ -1,7 +1,8 @@
 import _ from "lodash";
 
 export const dataPath = (data) => {
-    return _.get(data, '_embedded.show');
+    //return _.get(data, 'show');
+    return data;
 }
 
 export const getDataByGenre = (data, genre, size = -1) => {

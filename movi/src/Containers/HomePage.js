@@ -23,7 +23,7 @@ function HomePage() {
 
     useEffect(() => {
       async function getData() {
-         await axios.get('http://api.tvmaze.com/schedule/full').then((res) => {
+         await axios.get('http://api.tvmaze.com/shows?page=1').then((res) => {
 
           if (res.statusText !== 'OK') return;
             setCatalogData(res.data);
