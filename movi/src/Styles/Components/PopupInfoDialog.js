@@ -66,6 +66,7 @@ export const useStyles = makeStyles((theme) => ({
     additionalInfo: {
       fontSize: 'calc(10px + 1vmin)',
       marginTop: '15px',
+      marginBottom: '15px',
       textAlign: 'left'
     },
 
