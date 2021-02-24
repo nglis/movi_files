@@ -15,7 +15,6 @@ function HeroDisplay(props) {
 
     const [details, setDetails] = useState(getHeroData(data));
 
-    // TODO: NO VIDEO DATA THEN DISPLAY IMAGE
     const [videoData, setVideoData] = useState(null);
     const [videoDataUnavailable, setVideoDataUnavailable] = useState(false);
 
