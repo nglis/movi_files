@@ -6,6 +6,8 @@ import HomePage from './HomePage';
 
 function MainContainer() {
 
+    // TODO: FINISH MOBILE
+
     return(
         <div className="App">
             <AppBar />
