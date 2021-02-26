@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 export const useStyles = makeStyles((theme) => ({
     root : {
         backgroundColor: 'black',
-        fontSize: '70px',
+        fontSize: 'calc(30px + 5vmin)',
         fontWeight: '850',
         color: 'silver',
         display: 'flex',
@@ -19,7 +19,7 @@ export const useStyles = makeStyles((theme) => ({
       marginRight: '30px',
       display: 'flex',
       alignItems: 'center',
-      fontSize: '60px'
+      fontSize: 'calc(30px + 3vmin)'
     }
   })
 );

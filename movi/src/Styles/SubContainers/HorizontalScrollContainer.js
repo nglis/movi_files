@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
   root: {
-    height: '290px',
+    height: 'auto',
     overflow: 'hidden'
   },
   scrollBox: {
@@ -14,6 +14,7 @@ export const useStyles = makeStyles((theme) => ({
   img: {
     cursor: 'pointer',
     maxHeight: '240px',
+    height: '8em',
     paddingTop: '25px',
     paddingBottom: '25px',
     marginRight: '8px',
