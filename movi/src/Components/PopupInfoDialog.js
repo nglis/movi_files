@@ -9,6 +9,8 @@ import { useStyles } from '../Styles/Components/PopupInfoDialog';
 function PopupInfoDialog (props) {
     const classes = useStyles();
 
+    // TODO: Resizing to mobile size
+
     const { dialogData, setShowPopupInfoDialog } = props;
 
     return (

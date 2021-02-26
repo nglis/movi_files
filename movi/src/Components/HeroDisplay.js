@@ -13,6 +13,8 @@ function HeroDisplay(props) {
 
     const classes = useStyles();
 
+    // TODO: Resizing to mobile size
+
     const [details, setDetails] = useState(getHeroData(data));
 
     const [videoData, setVideoData] = useState(null);
