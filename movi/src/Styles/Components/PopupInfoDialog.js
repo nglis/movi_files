@@ -19,7 +19,7 @@ export const useStyles = makeStyles((theme) => ({
     },
 
     container: {
-      width: '25em',
+      width: '20em',
       height: 'auto',
       position: 'absolute',
       background: '#1c1c1c', 
@@ -118,6 +118,7 @@ export const useStyles = makeStyles((theme) => ({
     img: {
       marginTop: '50px',
       marginLeft: '15px',
+      width: '8em'
     },
 
     imdbContainer: {
