@@ -5,11 +5,15 @@ import imdbLogo from '../static/imdb.jpg';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
 import { useStyles } from '../Styles/Components/PopupInfoDialog';
+import useCurrentWidth from '../Hooks/useCurrentWidth';
 
 function PopupInfoDialog (props) {
     const classes = useStyles();
 
+    const width = useCurrentWidth();
+
     // TODO: Resizing to mobile size
+    // Image + Description is too big, need to remove image and use description only
 
     const { dialogData, setShowPopupInfoDialog } = props;
 
@@ -49,24 +53,26 @@ function PopupInfoDialog (props) {
                         </button>
                     </div>
                 </div>
-                <div className={classes.secondaryContainer}>
-                    <img 
-                        className={classes.img}
-                        key={dialogData.title} 
-                        src={dialogData.img} 
-                        alt={dialogData.title}
-                    />
-                    {_.get(dialogData, 'externals.imdb') && <div className={classes.imdbContainer}>
-                        <a href={`https://www.imdb.com/title/${dialogData.externals.imdb}/`} target="_blank" rel="noopener noreferrer">
-                            <img 
-                                className={classes.imdb}
-                                key="imdb-button" 
-                                src={imdbLogo} 
-                                alt="View on IMDb"
-                            />
-                        </a>
-                    </div>}
-                </div>
+                {width > 500 && 
+                    <div className={classes.secondaryContainer}>
+                        <img 
+                            className={classes.img}
+                            key={dialogData.title} 
+                            src={dialogData.img} 
+                            alt={dialogData.title}
+                        />
+                        {_.get(dialogData, 'externals.imdb') && <div className={classes.imdbContainer}>
+                            <a href={`https://www.imdb.com/title/${dialogData.externals.imdb}/`} target="_blank" rel="noopener noreferrer">
+                                <img 
+                                    className={classes.imdb}
+                                    key="imdb-button" 
+                                    src={imdbLogo} 
+                                    alt="View on IMDb"
+                                />
+                            </a>
+                        </div>}
+                    </div>
+                    }
             </div>
         </div>
     );
