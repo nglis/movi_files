@@ -11,10 +11,6 @@ function PopupInfoDialog (props) {
     const classes = useStyles();
 
     const width = useCurrentWidth();
-
-    // TODO: Resizing to mobile size
-    // Image + Description is too big, need to remove image and use description only
-
     const { dialogData, setShowPopupInfoDialog } = props;
 
     return (
