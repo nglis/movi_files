@@ -53,7 +53,7 @@ function PopupInfoDialog (props) {
                         </button>
                     </div>
                 </div>
-                {width > 500 && 
+                {width > 550 && 
                     <div className={classes.secondaryContainer}>
                         <img 
                             className={classes.img}

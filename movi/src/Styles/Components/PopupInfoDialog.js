@@ -19,7 +19,8 @@ export const useStyles = makeStyles((theme) => ({
     },
 
     container: {
-      width: '20em',
+      width: '25em',
+      maxWidth: '80vw',
       height: 'auto',
       position: 'absolute',
       background: '#1c1c1c', 
