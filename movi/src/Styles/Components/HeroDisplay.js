@@ -13,8 +13,7 @@ export const useStyles = makeStyles((theme) => ({
 
     details: {
         margin: '30px',
-        textAlign: 'left',
-        maxWidth: '45%'
+        textAlign: 'left'
     },
 
     title: {
