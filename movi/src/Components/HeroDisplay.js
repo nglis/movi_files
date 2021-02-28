@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import _ from 'lodash';
 import axios from 'axios';
 
+import useCurrentWidth from '../Hooks/useCurrentWidth';
 import { useStyles } from '../Styles/Components/HeroDisplay.js';
 
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
@@ -12,8 +13,9 @@ function HeroDisplay(props) {
     const { data } = props;
 
     const classes = useStyles();
+    const width = useCurrentWidth();
 
-    // TODO: Resizing to mobile size
+    // TODO: Finish display for mobile
 
     const [details, setDetails] = useState(getHeroData(data));
 
@@ -74,13 +76,15 @@ function HeroDisplay(props) {
                     </button>
                 </div>
             </div>
-            <div className={classes.previewContainer}>
-                {videoDataUnavailable && <></>}
-                {videoData && <iframe
-                    className={classes.previewVideo}
-                    src={videoData.link}
-                />}
-            </div>
+            {width > 750 && 
+                <div className={classes.previewContainer}>
+                    {videoDataUnavailable && <></>}
+                    {videoData && <iframe
+                        className={classes.previewVideo}
+                        src={videoData.link}
+                    />}
+                </div>
+            }
         </div>
     );
 }
