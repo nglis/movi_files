@@ -28,6 +28,30 @@ function useItemSelection( { setSelection, showDetails }) {
         setItemClicked(false);
     }
 
+    const handleItemTouchStart = () => {
+        setItemClicked(true);
+    }
+
+    const handleItemTouchEnd = item => {
+        if (!itemClicked) return;
+        if (!dragging) {
+            setSelection(item);
+            showDetails(true);
+        }
+        setDragging(false);
+        setItemClicked(false);
+    }
+
+    const handleItemTouchMove = () => {
+        if (!itemClicked) return;
+        setDragging(true);
+    }
+
+    const handleItemTouchLeave = () => {
+        setDragging(false);
+        setItemClicked(false);
+    }
+
     return {
         handleItemMouseUp,
         handleItemMouseDown,
