@@ -23,10 +23,10 @@ function HorizontalScrollContainer(props) {
     } = useHorizontalScrollContainer( { scrollDivRef } );
 
     const {
-        handleItemMouseUp,
-        handleItemMouseDown,
-        handleItemMouseMove,
-        handleItemMouseLeave
+        handleItemPointerUp,
+        handleItemPointerDown,
+        handleItemPointerMove,
+        handleItemPointerLeave
     } = useItemSelection( { setSelection, showDetails });
 
     useEffect(() => {
@@ -57,10 +57,10 @@ function HorizontalScrollContainer(props) {
                             key={collectionTitle + "-" + _.get(item, 'title', `movie-${idx}`)} 
                             src={_.get(item, 'img', null)} 
                             alt={_.get(item, 'title', 'Unknown Title')}
-                            onMouseUp={() => handleItemMouseUp(item)}
-                            onMouseDown={() => handleItemMouseDown()}
-                            onMouseMove={() => handleItemMouseMove()}
-                            onMouseLeave={() => handleItemMouseLeave()}
+                            onMouseUp={() => handleItemPointerUp(item)}
+                            onMouseDown={() => handleItemPointerDown()}
+                            onMouseMove={() => handleItemPointerMove()}
+                            onMouseLeave={() => handleItemPointerLeave()}
                         />
                     ))}
                 </div>
