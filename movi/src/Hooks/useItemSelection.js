@@ -4,7 +4,7 @@ function useItemSelection( { setSelection, showDetails }) {
     const [dragging, setDragging] = useState(false);
     const [itemSelected, setitemSelected] = useState(false);
 
-    const handleItemMouseUp = item => {
+    const handleItemPointerUp = item => {
         if (!itemSelected) return;
         if (!dragging) {
             setSelection(item);
@@ -14,49 +14,25 @@ function useItemSelection( { setSelection, showDetails }) {
         setitemSelected(false);
     }
 
-    const handleItemMouseDown = () => {
+    const handleItemPointerDown = () => {
         setitemSelected(true);
     }
 
-    const handleItemMouseMove = () => {
+    const handleItemPointerMove = () => {
         if (!itemSelected) return;
         setDragging(true);
     }
 
-    const handleItemMouseLeave = () => {
-        setDragging(false);
-        setitemSelected(false);
-    }
-
-    const handleItemTouchStart = () => {
-        setitemSelected(true);
-    }
-
-    const handleItemTouchEnd = item => {
-        if (!itemSelected) return;
-        if (!dragging) {
-            setSelection(item);
-            showDetails(true);
-        }
-        setDragging(false);
-        setitemSelected(false);
-    }
-
-    const handleItemTouchMove = () => {
-        if (!itemSelected) return;
-        setDragging(true);
-    }
-
-    const handleItemTouchLeave = () => {
+    const handleItemPointerLeave = () => {
         setDragging(false);
         setitemSelected(false);
     }
 
     return {
-        handleItemMouseUp,
-        handleItemMouseDown,
-        handleItemMouseMove,
-        handleItemMouseLeave
+        handleItemPointerUp,
+        handleItemPointerDown,
+        handleItemPointerMove,
+        handleItemPointerLeave
     };
 }
 
