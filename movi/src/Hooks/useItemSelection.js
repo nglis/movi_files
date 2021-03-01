@@ -2,54 +2,54 @@ import { useState } from 'react';
 
 function useItemSelection( { setSelection, showDetails }) {
     const [dragging, setDragging] = useState(false);
-    const [itemClicked, setItemClicked] = useState(false);
+    const [itemSelected, setitemSelected] = useState(false);
 
     const handleItemMouseUp = item => {
-        if (!itemClicked) return;
+        if (!itemSelected) return;
         if (!dragging) {
             setSelection(item);
             showDetails(true);
         }
         setDragging(false);
-        setItemClicked(false);
+        setitemSelected(false);
     }
 
     const handleItemMouseDown = () => {
-        setItemClicked(true);
+        setitemSelected(true);
     }
 
     const handleItemMouseMove = () => {
-        if (!itemClicked) return;
+        if (!itemSelected) return;
         setDragging(true);
     }
 
     const handleItemMouseLeave = () => {
         setDragging(false);
-        setItemClicked(false);
+        setitemSelected(false);
     }
 
     const handleItemTouchStart = () => {
-        setItemClicked(true);
+        setitemSelected(true);
     }
 
     const handleItemTouchEnd = item => {
-        if (!itemClicked) return;
+        if (!itemSelected) return;
         if (!dragging) {
             setSelection(item);
             showDetails(true);
         }
         setDragging(false);
-        setItemClicked(false);
+        setitemSelected(false);
     }
 
     const handleItemTouchMove = () => {
-        if (!itemClicked) return;
+        if (!itemSelected) return;
         setDragging(true);
     }
 
     const handleItemTouchLeave = () => {
         setDragging(false);
-        setItemClicked(false);
+        setitemSelected(false);
     }
 
     return {
