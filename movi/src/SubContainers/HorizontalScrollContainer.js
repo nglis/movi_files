@@ -16,9 +16,9 @@ function HorizontalScrollContainer(props) {
 
     const {
         scrollAmount,
-        handleMouseDown,
-        handleMouseMove,
-        handleEndDrag,
+        handlePointerDown,
+        handlePointerMove,
+        handlePointerEndDrag,
         setScrollDivScrollWidth
     } = useHorizontalScrollContainer( { scrollDivRef } );
 
@@ -40,10 +40,13 @@ function HorizontalScrollContainer(props) {
             </div>
             <div 
                 className={classes.root}
-                onMouseDown={e => handleMouseDown(e)}
-                onMouseMove={e => handleMouseMove(e)}
-                onMouseUp={() => handleEndDrag()}
-                onMouseLeave={() => handleEndDrag()}
+                onTouchStart={e => handlePointerDown(e)}
+                onTouchMove={e => handlePointerMove(e)}
+                onTouchEnd={() => handlePointerEndDrag()}
+                onMouseDown={e => handlePointerDown(e)}
+                onMouseMove={e => handlePointerMove(e)}
+                onMouseUp={() => handlePointerEndDrag()}
+                onMouseLeave={() => handlePointerEndDrag()}
             >
                 <div 
                     className={classes.scrollBox}

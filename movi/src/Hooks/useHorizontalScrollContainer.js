@@ -8,31 +8,51 @@ function useHorizontalScrollContainer( { scrollDivRef } ) {
 
     const [dragging, setDragging] = useState(false);
     const [scrollAmount, setScrollAmount] = useState(0);
-    const [mousePosition, setMousePosition] = useState( { x: -1, y: -1} );
+    const [pointerPosition, setPointerPosition] = useState( { x: -1, y: -1} );
     
     let width = useCurrentWidth();
 
-    const handleMouseDown = e => {
-        setDragging(true);
-        setMousePosition( { x: e.clientX, y: e.clientY } );
+    const handlePointerDown = e => {
+        let x, y;
 
-        e.stopPropagation();
-        e.preventDefault();
+        if (e.changedTouches) {
+            x = e.changedTouches[0].clientX;
+            y = e.changedTouches[0].clientY;
+        } else {
+            x = e.clientX;
+            y = e.clientY;
+
+            e.stopPropagation();
+            e.preventDefault();
+        }
+
+        setDragging(true);
+        setPointerPosition( { x, y } );
     } 
 
-    const handleMouseMove = e => {
+    const handlePointerMove = e => {
         if (!dragging) return;
 
-        const shift = scrollAmount + mousePosition.x - e.clientX;
+        let x, y;
+
+        if (e.changedTouches) {
+            x = e.changedTouches[0].clientX;
+            y = e.changedTouches[0].clientY;
+        } else {
+            x = e.clientX;
+            y = e.clientY;
+        }
+
+        const shift = scrollAmount + pointerPosition.x - x;
         if (shift > scrollDivScrollWidth - (scrollDivClientWidth) + 30) {
             return;
         }
 
         setScrollAmount(shift < 0 ? 0 : shift);
-        setMousePosition( { x: e.clientX, y: e.clientY } );
+        setPointerPosition( { x, y } );
     }
 
-    const handleEndDrag = () => {
+    const handlePointerEndDrag = () => {
         if (!dragging) return;
         setDragging(false);
     }
@@ -44,9 +64,9 @@ function useHorizontalScrollContainer( { scrollDivRef } ) {
 
     return {
         scrollAmount,
-        handleMouseDown,
-        handleMouseMove,
-        handleEndDrag,
+        handlePointerDown,
+        handlePointerMove,
+        handlePointerEndDrag,
         setScrollDivScrollWidth
     };
 }
