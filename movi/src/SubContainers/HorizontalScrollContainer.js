@@ -9,7 +9,7 @@ import useHorizontalScrollContainer from '../Hooks/useHorizontalScrollContainer'
 function HorizontalScrollContainer(props) {
     const { collectionTitle, content, setSelection, showDetails } = props;
 
-    // TODO: Add touch controls
+    // TODO: Add swipes?
 
     const scrollDivRef = useRef();
     const classes = useStyles();
