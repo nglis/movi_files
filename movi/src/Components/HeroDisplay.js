@@ -15,7 +15,6 @@ function HeroDisplay(props) {
     const classes = useStyles();
     const width = useCurrentWidth();
 
-    // TODO: Finish display for mobile
     // TODO: Resize video and description
 
     const [details, setDetails] = useState(getHeroData(data));
