@@ -15,7 +15,7 @@ function HeroDisplay(props) {
     const classes = useStyles();
     const width = useCurrentWidth();
 
-    //TODO: Separate herodisplay width based components into new components
+    // TODO: Separate herodisplay width based components into new components
 
     const [details, setDetails] = useState(getHeroData(data));
 
