@@ -11,6 +11,12 @@ export const useStyles = makeStyles((theme) => ({
         paddingBottom: '30px'
     },
 
+    heroImageContainer: {
+      padding: '30px',
+      display: 'flex',
+      flexDirection: 'column'
+    },
+
     details: {
         margin: '30px',
         textAlign: 'left'
@@ -91,6 +97,7 @@ export const useStyles = makeStyles((theme) => ({
     previewContainer: {
       margin: '30px',
       width: '100%',
+      width: '125em',
       height: '15em'
     },
     
@@ -99,6 +106,16 @@ export const useStyles = makeStyles((theme) => ({
       width: '100%',
       height: '100%',
       borderRadius: '10px'
+    },
+
+    heroImg: {
+      maxWidth: '100%'
+    },
+
+    heroImgButtons: {
+      display: 'flex',
+      justifyContent: 'center',
+      paddingTop: '15px'
     }
   }
   ));

@@ -64,6 +64,7 @@ export const generateEntry = (entry, descriptionMaxLength) => {
     const genres = _.get(pathToData, 'genres', []);
     const externals = _.get(pathToData, 'externals', {});
     const img = _.get(pathToData, 'image.medium', null);
+    const heroImg = _.get(pathToData, 'image.original', null);
     const date = _.get(pathToData, 'premiered', '');
     const rating = _.get(pathToData, 'rating.average', '');
     const length = _.get(pathToData, 'runtime', '');
@@ -77,6 +78,7 @@ export const generateEntry = (entry, descriptionMaxLength) => {
       genres,
       externals,
       img,
+      heroImg,
       rating,
       length,
       episode: '',

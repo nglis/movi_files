@@ -15,8 +15,7 @@ function HeroDisplay(props) {
     const classes = useStyles();
     const width = useCurrentWidth();
 
-    // TODO: Finish display for mobile
-    // TODO: Resize video and description
+    //TODO: Separate herodisplay width based components into new components
 
     const [details, setDetails] = useState(getHeroData(data));
 
@@ -44,26 +43,57 @@ function HeroDisplay(props) {
     }, []);
 
     return (
-        <div className={classes.root}>
-            <div className={classes.details}>
-                <div className={classes.title}>
-                    {details.title}
-                </div>
-                <div className={classes.other}>
-                    {details.year} | {details.rating}/10 | {details.length} min
-                </div>
-                <div className={classes.episode}>
-                    {details.episode}
-                </div>
-                <div className={classes.description}>
-                    {details.description}
-                </div>
-                {details.genres !== [] && 
-                    <div className={classes.additionalInfo}>
-                        <b>Genres:</b> {details.genres.join(', ')}
+        <>
+            {width > 750 ? <div className={classes.root}>
+                <div className={classes.details}>
+                    <div className={classes.title}>
+                        {details.title}
                     </div>
-                }
-                <div className={classes.heroActions}>
+                    <div className={classes.other}>
+                        {details.year} | {details.rating}/10 | {details.length} min
+                    </div>
+                    <div className={classes.episode}>
+                        {details.episode}
+                    </div>
+                    <div className={classes.description}>
+                        {details.description}
+                    </div>
+                    {details.genres !== [] && 
+                        <div className={classes.additionalInfo}>
+                            <b>Genres:</b> {details.genres.join(', ')}
+                        </div>
+                    }
+                    <div className={classes.heroActions}>
+                        <button className={classes.button}>
+                            <div className={classes.flexRowCentered}>
+                                <PlayArrowIcon /> 
+                                <span className={classes.playTextMargins}>
+                                    PLAY
+                                </span>
+                            </div>
+                        </button>
+                        <button className={classes.disabledButton}>
+                            SAVE
+                        </button>
+                    </div>
+                </div>
+                <div className={classes.previewContainer}>
+                    {videoDataUnavailable && <></>}
+                    {videoData && <iframe
+                        className={classes.previewVideo}
+                        src={videoData.link}
+                    />}
+                </div>
+            </div>
+            :
+            <div className={classes.heroImageContainer}>
+                <img 
+                    className={classes.heroImg}
+                    key={details.title} 
+                    src={details.heroImg} 
+                    alt={details.title}
+                />
+                <div className={classes.heroImgButtons}>
                     <button className={classes.button}>
                         <div className={classes.flexRowCentered}>
                             <PlayArrowIcon /> 
@@ -77,16 +107,8 @@ function HeroDisplay(props) {
                     </button>
                 </div>
             </div>
-            {width > 750 && 
-                <div className={classes.previewContainer}>
-                    {videoDataUnavailable && <></>}
-                    {videoData && <iframe
-                        className={classes.previewVideo}
-                        src={videoData.link}
-                    />}
-                </div>
             }
-        </div>
+        </>
     );
 }
 
