@@ -6,7 +6,7 @@ import HomePage from './HomePage';
 
 function MainContainer() {
 
-    // TODO: FINISH MOBILE
+    // TODO: App rename
 
     return(
         <div className="App">

@@ -15,7 +15,7 @@ function HeroDisplay(props) {
     const classes = useStyles();
     const width = useCurrentWidth();
 
-    // TODO: Separate herodisplay width based components into new components
+    const mobileView = width < 750;
 
     const [details, setDetails] = useState(getHeroData(data));
 
@@ -44,7 +44,7 @@ function HeroDisplay(props) {
 
     return (
         <>
-            {width > 750 ? <div className={classes.root}>
+            {!mobileView && <div className={classes.root}>
                 <div className={classes.details}>
                     <div className={classes.title}>
                         {details.title}
@@ -84,9 +84,8 @@ function HeroDisplay(props) {
                         src={videoData.link}
                     />}
                 </div>
-            </div>
-            :
-            <div className={classes.heroImageContainer}>
+            </div>}
+            {mobileView && <div className={classes.heroImageContainer}>
                 <img 
                     className={classes.heroImg}
                     key={details.title} 

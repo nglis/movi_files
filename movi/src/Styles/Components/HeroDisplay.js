@@ -12,7 +12,7 @@ export const useStyles = makeStyles((theme) => ({
     },
 
     heroImageContainer: {
-      padding: '30px',
+      padding: '60px',
       display: 'flex',
       flexDirection: 'column'
     },
