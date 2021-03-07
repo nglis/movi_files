@@ -12,12 +12,13 @@ export const useStyles = makeStyles((theme) => ({
     },
 
     heroImageContainer: {
-      padding: '60px',
+      padding: '50px',
       display: 'flex',
       flexDirection: 'column'
     },
 
     details: {
+        maxWidth: '50%',
         margin: '30px',
         textAlign: 'left'
     },
@@ -96,8 +97,8 @@ export const useStyles = makeStyles((theme) => ({
 
     previewContainer: {
       margin: '30px',
-      width: '100%',
-      width: '125em',
+      width: '40%',
+      maxWidth: '125em',
       height: '15em'
     },
     
